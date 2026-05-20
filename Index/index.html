@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETmalu</title>
+    <link rel="shortcut icon" href="/Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="index_style.css">
+    <script src="index_script.js" defer></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo" id="logo-backtop">
+            <img src="/Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#">Coupaws</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+        <button class="btn-login">Log In</button>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+
+    <section class="hero">
+
+        <div class="harrow hero-left-bg"></div>
+        <div class="harrow hero-right-photo"></div>
+
+        <div class="hero-content">
+            <div class="main-logo">
+                <img src="/Assets/Home_Logo.png" alt="PETmaluMAIN">
+            </div>
+
+            <h1>Lorem Ipsum</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia in quibusdam, architecto numquam
+                facilis deserunt blanditiis deleniti quas eius et temporibus consequuntur, molestias atque. Quaerat
+                temporibus enim nesciunt mollitia fugiat.
+            </p>
+
+        </div>
+
+    </section>
+
+    <div class="separator"></div>
+
+    <section class="adventure-section">
+        <div class="adventure-container">
+
+            <div class="adventure-left">
+                <h2>READY FOR AN ADVENTURE?</h2>
+                <p class="adventure-subtext">
+                    Time to join your pet to their adventure and make care more fun, along with others!
+                </p>
+
+                <ul class="adventure-features">
+                    <li>Earn from playing</li>
+                    <li>Enjoy from playing</li>
+                    <li>Save money from playing!</li>
+                </ul>
+
+                <button class="btn-journey">START THE JOURNEY &rarr;</button>
+            </div>
+
+            <div class="adventure-right">
+                <div class="pet-card-slider" id="petCardSlider">
+
+                    <div class="pet-card" id="petCardContent">
+
+                        <div class="card-top-layout">
+                            <div class="pet-name-vertical">BUDDY</div>
+                            <div class="pet-image-container">
+                                <img src="/Assets/wilsonlosiento.png" alt="Pet Avatar" id="cardPetImg">
+                            </div>
+                        </div>
+
+                        <div class="card-title-divider">
+                            <span class="paw-icon">&#128062;</span>
+                            <span class="pet-title">LOREM IPSUM DOLOR</span>
+                            <span class="paw-icon">&#128062;</span>
+                        </div>
+
+                        <div class="card-stats-layout">
+                            <div class="level-container">
+                                <label>LEVEL:</label>
+                                <div class="xp-bar">
+                                    <div class="xp-progress" style="width: 75%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="stat-row">
+                                <div class="stat-box">
+                                    <span class="stat-label">PAW-ER:</span>
+                                    <strong class="stat-value" id="cardPawer">20 PAWS</strong>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">ENERGY:</span>
+                                    <strong class="stat-value" id="cardEnergy">100%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,607 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(/Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(/Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(/Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(/Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(/Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* MAIN PAGE */
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 18px 40px;  
+    gap: 32px;
+
+    background: rgba(65, 38, 17, 0); 
+    backdrop-filter: blur(0px);
+
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+nav.scrolled {
+    background: rgba(65, 38, 17, 0.65); 
+    backdrop-filter: blur(12px);       
+    padding: 12px 40px;                
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+.nav-links + .btn-login {
+    margin-left: auto;
+}
+
+.btn-login {
+    background: #d97b4f;
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-login:hover { background: #b85e32; transform: scale(1.04); }
+
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* ═══════════════════════════
+   HERO
+═══════════════════════════ */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.harrow {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+}
+
+.hero-left-bg {
+    background-image: url('/Assets/Home_BG.png');
+    background-size: cover;
+    background-position: left center;
+    z-index: 2;
+}
+
+.hero-right-photo {
+    background-image: url('/Assets/Home_Pets.png');
+    background-size: cover;
+    background-position: right center;
+    z-index: 1;
+}
+
+.hero-content {
+    /* border: solid; <-- Debugging: know size*/
+    position: relative;
+    z-index: 10;
+    padding: 120px 40px 60px 0;
+    max-width: 700px;
+}
+
+/* FIX: removed padding so logo aligns with h1 and p */
+.main-logo {
+    margin-left: -30px;
+    margin-bottom: 0;
+}
+
+.main-logo img {
+    transform: rotate(-4deg);
+    height: 380px;         
+    width: auto;
+}
+
+.hero-content h1 {
+    font-family: 'Gagalin', sans-serif;
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+    margin-top: -50px;      /* gap between logo and h1 */
+    padding-left: 140px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 440px;
+    margin-left: 100px;
+    text-align: justify;
+}
+
+.separator {
+    background-color: #c59d87;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ═══════════════════════════
+   ADVENTURE SECTION
+═══════════════════════════ */
+.adventure-section {
+    background-color: #cbb1a3; /* Matches your warm background color */
+    padding: 80px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.adventure-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Left Content Styles */
+.adventure-left {
+    flex: 1;
+    max-width: 550px;
+}
+
+.adventure-left h2 {
+    font-family: 'ArchivoBlack', 'Gagalin', sans-serif;
+    font-size: 3rem;
+    color: #fff; /* White title with a soft offset shadow look */
+    text-shadow: 2px 2px 0px rgba(65, 38, 17, 0.2);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+}
+
+.adventure-subtext {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #412611; /* Dark brown for high contrast readability */
+    margin-bottom: 20px;
+}
+
+.adventure-features {
+    list-style-type: none; /* Removes standard bullets so we can style them */
+    margin-bottom: 32px;
+}
+
+.adventure-features li {
+    font-size: 1.1rem;
+    color: #412611;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Custom Bullet Point (A neat trick instead of standard dots) */
+.adventure-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #412611;
+    font-size: 1.3rem;
+}
+
+/* Start Journey Button */
+.btn-journey {
+    background: #d97b4f;
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 12px; /* Smooth rounded corners matching your image */
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-journey:hover {
+    background: #b85e32;
+    transform: translateY(-2px);
+}
+
+/* Right Content Column holding the placeholder card */
+.adventure-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.pet-card {
+    background: #e1deda; /* Light gray card backing */
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px; /* Matches your rounded card graphics */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff; /* Gives it a premium clean border look */
+}
+
+/* Card Container Setup */
+.pet-card-slider {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+}
+
+/* The Main Card Box */
+.pet-card {
+    background-color: #cbcbc9; /* Matches the exact matte gray background */
+    width: 100%;
+    max-width: 380px;
+    border-radius: 28px;       /* Smooth rounded card frame */
+    padding: 24px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.1); /* Subtle inner depth */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.pet-card.fade-out {
+    opacity: 0;
+}
+
+/* Image + Vertical Name Row */
+.card-top-layout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* The Magic Trick for Vertical Text */
+.pet-name-vertical {
+    font-family: 'Archive', 'Gagalin', Arial, sans-serif;
+    font-size: 1.8rem;
+    color: #000000;
+    writing-mode: vertical-rl;  /* Rotates text alignment vertically */
+    transform: rotate(180deg);    /* Keeps text orientation reading upwards */
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.pet-image-container {
+    flex: 1;
+    background: #738c31; /* Matches the landscape greens or backup placeholder color */
+    border-radius: 24px;
+    height: 190px;
+    overflow: hidden;
+}
+
+.pet-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps real images nicely cropped inside */
+}
+
+/* Decorative Title Separator Line */
+.card-title-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 4px 0;
+}
+
+.card-title-divider::before,
+.card-title-divider::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background-color: #433530; /* Dark alignment line color */
+}
+
+.pet-title {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.paw-icon {
+    color: #000;
+    font-size: 1rem;
+}
+
+/* Progress and Stats Layout */
+.level-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.level-container label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.xp-bar {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.xp-progress {
+    background: #8fae6b; /* Soft green status fill from your layout design */
+    height: 100%;
+    border-radius: 20px;
+}
+
+/* Side-by-Side Stat Numbers */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 4px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: 900;
+}
+
+/*
+    FOOTER
+*/
+footer {
+    background-color: black;
+    padding: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ═══════════════════════════
+   ADVENTURE RESPONSIVE MODIFIER
+═══════════════════════════ */
+@media (max-width: 768px) {
+    .adventure-container {
+        flex-direction: column; /* Automatically stacks them on mobile! */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .adventure-features li {
+        padding-left: 0;
+    }
+    .adventure-features li::before {
+        display: none; /* Cleans up alignment for center text on mobile */
+    }
+    
+    .adventure-left h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ═══════════════════════════
+   MOBILE (768px and below)
+═══════════════════════════ */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links + .btn-login {
+        margin-left: auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 90px; left: 0; right: 0;
+        background: rgba(65, 38, 17, 0.85);
+        padding: 20px;
+        gap: 16px;
+        text-align: center;
+        z-index: 200;
+
+        /* fade + slide animation */
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        color: rgb(255, 255, 255);
+    }
+
+    .hero-left-bg { display: none; }
+
+    .hero-right-photo {
+        background-position: center;
+        z-index: 1;
+    }
+
+    .hero-right-photo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+    }
+
+    .logo img {
+        filter: brightness(0) invert(1);
+        height: 100px;
+        width: auto;
+    }
+
+    .hero-content {
+        padding: 120px 24px 40px 24px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .main-logo {
+        display: flex;
+        justify-content: center;   
+    }
+
+    .main-logo img {
+        height: 140px;
+        padding-left: 150px;
+        margin-bottom: 20px;             
+    }
+
+    .hero-content p {
+        text-align: center;
+    }
+}
+
+/* ═══════════════════════════
+   ULTRA-SMALL MOBILE (320px and below)
+═══════════════════════════ */
+@media (max-width: 360px) {
+    nav {
+        padding: 10px 16px; /* Shrinks container spacing so buttons don't clip */
+        gap: 12px;
+    }
+
+    .logo img {
+        height: 45px; /* Scales down the header logo so it fits alongside buttons */
+    }
+
+    .btn-login {
+        padding: 6px 16px; /* Makes the login button thumb-friendly but compact */
+        font-size: 0.8rem;
+    }
+
+    .hamburger {
+        font-size: 1.5rem; /* Scales down hamburger slightly */
+    }
+
+    .hero-content {
+        padding-top: 90px; /* Prevents header from hiding top elements */
+    }
+
+    .main-logo img {
+        height: 110px; /* Scales down the big center logo */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem; /* Softens big heading text so it doesn't split awkwardly into single letters */
+    }
+
+    .hero-content p {
+        font-size: 0.85rem; /* Keeps line lengths comfortable to read */
+    }
+}
