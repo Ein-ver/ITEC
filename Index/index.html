@@ -28,7 +28,6 @@
     </nav>
 
     <section class="hero">
-
         <div class="harrow hero-left-bg"></div>
         <div class="harrow hero-right-photo"></div>
 
@@ -36,16 +35,13 @@
             <div class="main-logo">
                 <img src="/Assets/Home_Logo.png" alt="PETmaluMAIN">
             </div>
-
             <h1>Lorem Ipsum</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia in quibusdam, architecto numquam
                 facilis deserunt blanditiis deleniti quas eius et temporibus consequuntur, molestias atque. Quaerat
                 temporibus enim nesciunt mollitia fugiat.
             </p>
-
         </div>
-
     </section>
 
     <div class="separator"></div>
@@ -58,23 +54,20 @@
                 <p class="adventure-subtext">
                     Time to join your pet to their adventure and make care more fun, along with others!
                 </p>
-
                 <ul class="adventure-features">
                     <li>Earn from playing</li>
                     <li>Enjoy from playing</li>
                     <li>Save money from playing!</li>
                 </ul>
-
                 <button class="btn-journey">START THE JOURNEY &rarr;</button>
             </div>
 
             <div class="adventure-right">
                 <div class="pet-card-slider" id="petCardSlider">
-
                     <div class="pet-card" id="petCardContent">
 
                         <div class="card-top-layout">
-                            <div class="pet-name-vertical">BUDDY</div>
+                            <div class="pet-name-vertical">SHONGET</div>
                             <div class="pet-image-container">
                                 <img src="/Assets/wilsonlosiento.png" alt="Pet Avatar" id="cardPetImg">
                             </div>
@@ -93,7 +86,6 @@
                                     <div class="xp-progress" style="width: 75%;"></div>
                                 </div>
                             </div>
-
                             <div class="stat-row">
                                 <div class="stat-box">
                                     <span class="stat-label">PAW-ER:</span>
@@ -107,17 +99,64 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- MODAL -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-card">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
 
-    <footer>
+            <!-- LOGIN VIEW -->
+            <div class="auth-view" id="loginView">
+                <h2 class="auth-title">LOG IN</h2>
+                <p class="auth-subtitle">Purr~ welcome back hooman!</p>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="text" id="loginUser" placeholder="Username/Email">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPass" placeholder="Password">
+                    </div>
+                    <!-- General form error (wrong credentials, no account) -->
+                    <span class="form-error" id="loginFormError"></span>
+                    <button type="submit" class="btn-auth-submit">LOG IN</button>
+                </form>
+                <p class="auth-switch-text"><a href="#" id="switchToRegister">Register Now</a></p>
+            </div>
 
-    </footer>
+            <!-- REGISTER VIEW -->
+            <div class="auth-view hidden" id="registerView">
+                <h2 class="auth-title">REGISTER</h2>
+                <p class="auth-subtitle">Woof! Let's get started!</p>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <input type="email" id="regEmail" placeholder="Email Address">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="regPass" placeholder="Password">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="regConfirm" placeholder="Confirm Password">
+                    </div>
+                    <div class="terms-row">
+                        <input type="checkbox" id="agreeTerms">
+                        <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a></label>
+                    </div>
+                    <span class="form-error" id="registerFormError"></span>
+                    <button type="submit" class="btn-auth-submit">REGISTER</button>
+                </form>
+                <p class="auth-switch-text">Account Exists? <a href="#" id="switchToLogin">Log In</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer></footer>
+
 </body>
 
 </html>
