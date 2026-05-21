@@ -24,10 +24,10 @@ if (backTopLogo) {
 
 // 4. --- CARD SWITCHER LOGIC ---
 const petData = [
-    { name: "NEMU",    title: "JUSTICEMAXXING",    level: "75%", pawer: "70 PAWS", energy: "100%", img: "/Assets/gomcat.png" },
-    { name: "LUNA",    title: "THE SWIFT SCOUT",   level: "40%", pawer: "35 PAWS", energy: "80%",  img: "/Assets/elgato.png" },
-    { name: "COCO",    title: "GENTLE GIANT",       level: "95%", pawer: "15 PAWS", energy: "50%",  img: "/Assets/grrr.png" },
-    { name: "SHONGET", title: "LOREM IPSUM DOLOR",  level: "15%", pawer: "10 PAWS", energy: "10%",  img: "/Assets/wilsonlosiento.png" }
+    { name: "NEMU", title: "JUSTICEMAXXING", level: "75%", pawer: "70 PAWS", energy: "100%", img: "/Assets/gomcat.png" },
+    { name: "LUNA", title: "THE SWIFT SCOUT", level: "40%", pawer: "35 PAWS", energy: "80%", img: "/Assets/elgato.png" },
+    { name: "COCO", title: "GENTLE GIANT", level: "95%", pawer: "15 PAWS", energy: "50%", img: "/Assets/grrr.png" },
+    { name: "SHONGET", title: "LOREM IPSUM DOLOR", level: "15%", pawer: "10 PAWS", energy: "10%", img: "/Assets/wilsonlosiento.png" }
 ];
 
 let currentPetIndex = 0;
@@ -42,19 +42,19 @@ function rotatePetCard() {
         currentPetIndex = (currentPetIndex + 1) % petData.length;
         const nextPet = petData[currentPetIndex];
 
-        const nameEl  = document.querySelector('.pet-name-vertical');
+        const nameEl = document.querySelector('.pet-name-vertical');
         const titleEl = document.querySelector('.pet-title');
         const pawerEl = document.getElementById('cardPawer');
-        const energyEl= document.getElementById('cardEnergy');
-        const imgEl   = document.getElementById('cardPetImg');
-        const xpEl    = document.querySelector('.xp-progress');
+        const energyEl = document.getElementById('cardEnergy');
+        const imgEl = document.getElementById('cardPetImg');
+        const xpEl = document.querySelector('.xp-progress');
 
-        if (nameEl)   nameEl.innerText       = nextPet.name;
-        if (titleEl)  titleEl.innerText      = nextPet.title;
-        if (pawerEl)  pawerEl.innerText      = nextPet.pawer;
-        if (energyEl) energyEl.innerText     = nextPet.energy;
-        if (imgEl)    imgEl.src              = nextPet.img;
-        if (xpEl)     xpEl.style.width       = nextPet.level;
+        if (nameEl) nameEl.innerText = nextPet.name;
+        if (titleEl) titleEl.innerText = nextPet.title;
+        if (pawerEl) pawerEl.innerText = nextPet.pawer;
+        if (energyEl) energyEl.innerText = nextPet.energy;
+        if (imgEl) imgEl.src = nextPet.img;
+        if (xpEl) xpEl.style.width = nextPet.level;
 
         card.classList.remove('fade-out');
     }, 200);
@@ -63,14 +63,14 @@ function rotatePetCard() {
 setInterval(rotatePetCard, 4000);
 
 // 5. --- MODAL OPEN/CLOSE ---
-const authModal       = document.getElementById('authModal');
-const btnLoginNav     = document.querySelector('.btn-login');
-const btnJourney      = document.querySelector('.btn-journey');
-const closeModalBtn   = document.getElementById('closeModalBtn');
-const loginView       = document.getElementById('loginView');
-const registerView    = document.getElementById('registerView');
-const switchToRegister= document.getElementById('switchToRegister');
-const switchToLogin   = document.getElementById('switchToLogin');
+const authModal = document.getElementById('authModal');
+const btnLoginNav = document.querySelector('.btn-login');
+const btnJourney = document.querySelector('.btn-journey');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const loginView = document.getElementById('loginView');
+const registerView = document.getElementById('registerView');
+const switchToRegister = document.getElementById('switchToRegister');
+const switchToLogin = document.getElementById('switchToLogin');
 
 function openModal() {
     authModal.classList.add('active');
@@ -97,11 +97,11 @@ function showLoginView(e) {
     clearErrors();
 }
 
-if (btnLoginNav)      btnLoginNav.addEventListener('click', openModal);
-if (btnJourney)       btnJourney.addEventListener('click', openModal);
-if (closeModalBtn)    closeModalBtn.addEventListener('click', closeModal);
+if (btnLoginNav) btnLoginNav.addEventListener('click', openModal);
+if (btnJourney) btnJourney.addEventListener('click', openModal);
+if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 if (switchToRegister) switchToRegister.addEventListener('click', showRegisterView);
-if (switchToLogin)    switchToLogin.addEventListener('click', showLoginView);
+if (switchToLogin) switchToLogin.addEventListener('click', showLoginView);
 
 window.addEventListener('click', (e) => {
     if (e.target === authModal) closeModal();
@@ -150,11 +150,11 @@ if (registerForm) {
         event.preventDefault();
         clearErrors();
 
-        const usernameInput  = document.getElementById('regUser');
-        const passwordInput  = document.getElementById('regPass');
-        const confirmInput   = document.getElementById('regConfirm');
-        const agreeTerms     = document.getElementById('agreeTerms');
-        const formError      = document.getElementById('registerFormError');
+        const usernameInput = document.getElementById('regUser');
+        const passwordInput = document.getElementById('regPass');
+        const confirmInput = document.getElementById('regConfirm');
+        const agreeTerms = document.getElementById('agreeTerms');
+        const formError = document.getElementById('registerFormError');
 
         let hasError = false;
 
@@ -212,11 +212,11 @@ if (registerForm) {
         event.preventDefault();
         clearErrors();
 
-        const emailInput   = document.getElementById('regEmail');
-        const passwordInput= document.getElementById('regPass');
+        const emailInput = document.getElementById('regEmail');
+        const passwordInput = document.getElementById('regPass');
         const confirmInput = document.getElementById('regConfirm');
-        const agreeTerms   = document.getElementById('agreeTerms');
-        const formError    = document.getElementById('registerFormError');
+        const agreeTerms = document.getElementById('agreeTerms');
+        const formError = document.getElementById('registerFormError');
 
         let hasError = false;
 
@@ -238,22 +238,29 @@ if (registerForm) {
         }
 
         if (!agreeTerms.checked) {
-            if (formError) {
-                formError.style.color = '#c0392b';
-                formError.textContent = 'You must agree to the Terms of Service.';
-            }
+            if (formError) formError.textContent = 'You must agree to the Terms of Service.';
             hasError = true;
         }
 
         if (hasError) return;
 
-        // Save email + password, username is empty until profile setup
-        const userAccountData = {
+        // Load existing accounts array (or start fresh)
+        const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
+
+        // Check if email already exists
+        const emailExists = accounts.some(acc => acc.email === emailInput.value.trim());
+        if (emailExists) {
+            showError(emailInput, 'This email is already registered.');
+            return;
+        }
+
+        // Add new account to the array
+        accounts.push({
             email: emailInput.value.trim(),
             password: passwordInput.value,
-            username: ''   // will be set on profile page later
-        };
-        localStorage.setItem('registeredUser', JSON.stringify(userAccountData));
+            username: ''   // set later on profile page
+        });
+        localStorage.setItem('petmaluAccounts', JSON.stringify(accounts));
 
         registerForm.reset();
         showLoginView();
@@ -290,29 +297,36 @@ if (loginForm) {
 
         if (hasError) return;
 
-        const storedUserData = localStorage.getItem('registeredUser');
+        // Load accounts array
+        const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
 
-        if (storedUserData) {
-            const parsedAccount = JSON.parse(storedUserData);
+        // Find matching account
+        const matched = accounts.find(acc =>
+            acc.email === userInput.value.trim() ||
+            acc.username === userInput.value.trim()
+        );
 
-            // Login only via email now
-            if (userInput.value.trim() === parsedAccount.email && 
-                passInput.value === parsedAccount.password) {
-                closeModal();
-                // window.location.href = "/profile.html"; // redirect to profile later
-            } else {
-                showError(userInput, '');
-                showError(passInput, '');
-                if (formError) {
-                    formError.style.color = '#c0392b';
-                    formError.textContent = 'Wrong email or password. Try again!';
-                }
-            }
-        } else {
+        if (!matched) {
             if (formError) {
                 formError.style.color = '#c0392b';
-                formError.textContent = 'No account found. Register first!';
+                formError.textContent = 'No account found with that email/username!';
             }
+            showError(userInput, '');
+            return;
         }
+
+        if (matched.password !== passInput.value) {
+            showError(passInput, '');
+            if (formError) {
+                formError.style.color = '#c0392b';
+                formError.textContent = 'Wrong password/username. Try again!';
+            }
+            return;
+        }
+
+        // Success — save who is currently logged in
+        localStorage.setItem('loggedInUser', JSON.stringify(matched));
+        closeModal();
+        window.location.href = "/Settings/setting.html";
     });
 }
