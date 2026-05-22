@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETmalu - Game</title>
+    <link rel="shortcut icon" href="/Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="dailytask_style.css">
+    <script src="dailytask_script.js" defer></script>
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="game-nav">
+        <a href="/WebIndex/index.html" class="nav-logo">
+            <img src="/Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+        <div class="nav-links">
+            <a href="dailytask.html" class="active">GAME</a>
+            <a href="#">COUPAWS</a>
+        </div>
+        <div class="nav-right">
+            <a href="/WebSettings/setting.html" class="btn-profile">PROFILE</a>
+            <button class="btn-logout" id="btnLogout">Log out</button>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <button class="sidebar-btn active" data-section="daily">DAILY TASKS</button>
+            <button class="sidebar-btn" data-section="adventure">ADVENTURE</button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- ── DAILY TASKS SECTION ── -->
+            <section class="section-panel active" id="section-daily">
+
+                <div class="panel-left">
+
+                    <div class="activities-header">
+                        <h2 class="activities-title">ACTIVITIES</h2>
+                        <span class="streak-badge">STREAK: <strong id="streakCount">0</strong></span>
+                    </div>
+                    <p class="activities-desc">Finish each activity to earn energy! Each day streak multiplies to exp earned</p>
+                    <hr class="activities-divider">
+
+                    <!-- MORNING -->
+                    <div class="task-group">
+                        <div class="task-group-header">
+                            <span class="task-group-title">MORNING</span>
+                            <span class="task-group-reward">(complete the following quests to get 20% Energy!)</span>
+                        </div>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="20" data-energy="0" data-group="morning">
+                            <span class="custom-checkbox"></span>
+                            Feed your pet <span class="task-exp">(+20 exp)</span>
+                        </label>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="10" data-energy="0" data-group="morning">
+                            <span class="custom-checkbox"></span>
+                            Refill water bowl <span class="task-exp">(+10 exp)</span>
+                        </label>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="15" data-energy="0" data-group="morning">
+                            <span class="custom-checkbox"></span>
+                            Clean sleeping area <span class="task-exp">(+15 exp)</span>
+                        </label>
+                    </div>
+
+                    <!-- BONDING -->
+                    <div class="task-group">
+                        <div class="task-group-header">
+                            <span class="task-group-title">BONDING</span>
+                            <span class="task-group-reward">(complete the following quests to get 40% Energy!)</span>
+                        </div>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="100" data-energy="0" data-group="bonding">
+                            <span class="custom-checkbox"></span>
+                            Walk your pet for 3 minutes <span class="task-exp">(+100 exp)</span>
+                        </label>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="80" data-energy="0" data-group="bonding">
+                            <span class="custom-checkbox"></span>
+                            Play fetch for 1 minute and 30 seconds <span class="task-exp">(+80 exp)</span>
+                        </label>
+                    </div>
+
+                    <!-- CARE -->
+                    <div class="task-group">
+                        <div class="task-group-header">
+                            <span class="task-group-title">CARE</span>
+                            <span class="task-group-reward">(complete the following quests to get 10% Energy!)</span>
+                        </div>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="25" data-energy="0" data-group="care">
+                            <span class="custom-checkbox"></span>
+                            Brush your pet's teeth <span class="task-exp">(+25 exp)</span>
+                        </label>
+                        <label class="task-item">
+                            <input type="checkbox" data-exp="20" data-energy="0" data-group="care">
+                            <span class="custom-checkbox"></span>
+                            Groom your pet <span class="task-exp">(+20 exp)</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- PET CARD -->
+                <div class="panel-right">
+                    <div class="level-badge" id="levelBadge">LVL 1:</div>
+
+                    <div class="pet-card" id="petCardGame">
+
+                        <div class="card-top-layout">
+                            <div class="pet-name-vertical" id="gameCardName">PET NAME</div>
+                            <div class="pet-image-container">
+                                <div class="pet-image-placeholder" id="gamePetPlaceholder">
+                                    <span>PET PICTURE<br>HERE</span>
+                                </div>
+                                <img id="gamePetImg" src="" alt="Pet" style="display:none;">
+                            </div>
+                        </div>
+
+                        <div class="card-title-divider">
+                            <span class="paw-icon">🐾</span>
+                            <span class="card-label">TITLE</span>
+                            <span class="paw-icon">🐾</span>
+                        </div>
+
+                        <div class="card-pet-title" id="gameCardTitle">YOUR PET TITLE</div>
+
+                        <div class="card-stats-layout">
+                            <div class="level-container">
+                                <label>LEVEL:</label>
+                                <div class="xp-bar">
+                                    <div class="xp-progress" id="xpBar" style="width: 2%;"></div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-box">
+                                    <span class="stat-label">PAW-ER:</span>
+                                    <strong class="stat-value" id="gameCardPawer">2 PAWS</strong>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">ENERGY:</span>
+                                    <strong class="stat-value" id="gameCardEnergy">100%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ── ADVENTURE SECTION ── -->
+            <section class="section-panel" id="section-adventure">
+                <div class="panel-left">
+                    <h2 class="activities-title">ADVENTURE</h2>
+                    <p class="activities-desc">Adventure mode coming soon! Complete daily tasks to unlock.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
