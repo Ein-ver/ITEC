@@ -627,3 +627,74 @@ body {
 .success-icon {
     font-size: 2.5rem;
 }
+
+/* Hide mobile UI on desktop */
+.hamburger, .btn-mobile-filter, .btn-close-filters { display: none; }
+
+/* ══════════════════════════════════════════════════
+   MOBILE VIEW (ENABLES TOP TAB BAR FOR EASY THINGIE)
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* ── NAVBAR & HAMBURGER ── */
+    .game-nav { padding: 0 16px; justify-content: space-between; }
+    .nav-logo img { height: 45px; }
+    .hamburger { display: block; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
+    
+    .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; width: 100%;
+        background: rgba(217, 123, 79, 0.98); backdrop-filter: blur(8px);
+        flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    
+    /* Stack the profile/logout buttons neatly inside the dropdown */
+    .nav-right { flex-direction: column; margin-left: 0; width: 100%; justify-content: center; }
+
+    /* ── PAGE LAYOUT & SEARCH BAR ── */
+    .page-layout { padding: 15px; }
+    .top-bar { 
+        flex-wrap: wrap; /* Allows items to stack if they run out of space */
+        gap: 12px; 
+        margin-bottom: 20px; 
+    }
+    .search-wrap { width: 100%; max-width: 100%; } /* Search takes full width! */
+    
+    /* filter button */
+    .btn-mobile-filter {
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        width: 100%; background: var(--brown-card); color: white;
+        border: none; padding: 12px; border-radius: 12px; letter-spacing: 3px;
+        font-family: 'EtnaSerif', sans-serif; font-size: 1rem; cursor: pointer;
+    }
+
+    /* ── copied from Amazon ── */
+    .content-layout { flex-direction: column; gap: 15px; }
+    
+    .filter-sidebar {
+        position: fixed; top: 0; left: -100%; /* Hidden off-screen to the left */
+        width: 280px; height: 100vh;
+        background: var(--beige); z-index: 200; padding: 24px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.3); overflow-y: auto;
+        transition: left 0.3s ease; /* Smooth sliding animation */
+    }
+    .filter-sidebar.open { left: 0; } /* Slides in when toggled! */
+    
+    /* Show close button inside the drawer */
+    .btn-close-filters {
+        display: block; width: 100%; background: var(--orange); color: white;
+        border: none; padding: 12px; border-radius: 12px; margin-bottom: 24px;
+        font-family: 'LeagueSpartan', sans-serif; font-size: 1rem; cursor: pointer;
+    }
+
+    /* ── COUPON CARDS (320px Fix) ── */
+    .coupon-grid { grid-template-columns: 1fr; } /* 1 Coupon only per something idk kinda like amazon */
+    
+    .coupon-card {
+        flex-direction: column; /* image on TOP, text on BOTTOM */
+    }
+    .coupon-img {
+        width: 100%;    /* Image takes full width of the card */
+        height: 150px;  /* Fixed height for a nice banner look */
+    }
+    .coupon-info { padding: 20px 16px; }
+}

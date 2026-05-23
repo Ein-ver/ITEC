@@ -120,6 +120,8 @@ body {
 /* ═══════════════════════
    NAVBAR
 ═══════════════════════ */
+.hamburger { display: none; }
+
 .profile-nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -141,7 +143,10 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 28px;
+    flex: 1;
+    justify-content: flex-end;
 }
 
 .nav-links a {
@@ -531,4 +536,118 @@ body {
     margin-top: 8px;
     margin-left: 12px;
     min-height: 1em;
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE VIEW (ENABLES TOP TAB BAR FOR EASY THINGIE)
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    
+    /* ── 1. NAVBAR & HAMBURGER ── */
+    .profile-nav {
+        padding: 0 16px;
+        justify-content: space-between;
+    }
+    .nav-logo img { height: 45px; } /* Shrink logo */
+
+    .hamburger {
+        display: block; /* Reveal hamburger */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    /* Convert links into absolute dropdown */
+    .nav-links {
+        display: none; 
+        position: absolute;
+        font-family: 'EtnaSerif', sans-serif;
+        top: var(--nav-h);
+        left: 0;
+        width: 100%;
+        background: rgba(173, 85, 43, 0.98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 0;
+        gap: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .nav-links.open {
+        display: flex; /* in Javascript */
+    }
+    .btn-logout { margin-left: 0; background-color: #7c340b;} /* Reset margin for mobile stack */
+
+    /* ── 2. LAYOUT & SCROLLABLE SIDEBAR ── */
+    .page-layout {
+        flex-direction: column; /* Stacks sidebar on top of content */
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 0;
+        flex-direction: row;        /* Aligns buttons horizontally */
+        overflow-x: auto;           /* horizontal swipe wowers */
+        white-space: nowrap;        /* Prevents text from wrapping */
+        scrollbar-width: none;      /* FOR FIREFOX */
+    }
+    .sidebar::-webkit-scrollbar { 
+        display: none;              /* FOR CHROME OR CHROMIUM BASED WEBSITES  */
+    }
+
+    .sidebar-btn {
+        border-radius: 0;           /* Flat buttons */
+        margin-right: 0;
+        padding: 16px 24px;
+        font-size: 1rem;
+        border-bottom: 3px solid transparent;
+    }
+    .sidebar-btn.active {
+        background: var(--brown-dark);
+        color: white;
+        border-bottom: 3px solid var(--beige); /* Underline indicator */
+    }
+
+    /* ── 3. MAIN CONTENT FIXES (320px Safe) ── */
+    .main-content {
+        padding: 20px 15px; /* Squeeze margins to maximize screen */
+    }
+
+    .section-panel {
+        flex-direction: column; /* Stack left form and right card */
+        gap: 40px;
+    }
+
+    .panel-left, .panel-right {
+        max-width: 100%; /* Force full width on tiny screens */
+        flex: unset;
+    }
+
+    /* Prevent inputs from breaking screen bounds */
+    .input-wrap input[type="text"],
+    .input-wrap input[type="email"],
+    .input-wrap input[type="password"] {
+        max-width: 100%;
+    }
+
+    /* ── 4. PET CARD RESIZING ── */
+    .pet-card-preview {
+        padding: 16px; /* Shrink padding to fit 320px */
+        gap: 12px;
+    }
+    .pet-image-container {
+        height: 150px; /* Compress image height slightly */
+    }
+    .pet-name-vertical {
+        font-size: 1.4rem; /* Shrink font to prevent vertical overflow */
+    }
+    .card-pet-title {
+        font-size: 0.85rem;
+    }
+    .btn-save {
+        width: 100%; /* Make save button full width for easy tapping */
+    }
 }

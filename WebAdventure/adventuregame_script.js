@@ -1,4 +1,11 @@
 // ═══════════════════════════════════════
+// 0. MOBILE MENU TOGGLE
+// ═══════════════════════════════════════
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════
 // AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));

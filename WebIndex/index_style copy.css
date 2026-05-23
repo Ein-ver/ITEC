@@ -691,6 +691,128 @@ footer .foot_list {
 
 .terms-row a:hover { color: #d97b4f; }
 
+/* ═══════════════════════════
+   MOBILE (768px and below)
+═══════════════════════════ */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links + .btn-login {
+        margin-left: auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 90px; left: 0; right: 0;
+        background: rgba(65, 38, 17, 0.85);
+        padding: 20px;
+        gap: 16px;
+        text-align: center;
+        z-index: 200;
+
+        /* fade + slide animation */
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        color: rgb(255, 255, 255);
+    }
+
+    .hero-left-bg { display: none; }
+
+    .hero-right-photo {
+        background-position: center;
+        z-index: 1;
+    }
+
+    .hero-right-photo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+    }
+
+    .logo img {
+        filter: brightness(0) invert(1);
+        height: 100px;
+        width: auto;
+    }
+
+    .hero-content {
+        padding: 120px 24px 40px 24px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .main-logo {
+        display: flex;
+        justify-content: center;   
+    }
+
+    .main-logo img {
+        height: 140px;
+        padding-left: 150px;
+        margin-bottom: 20px;             
+    }
+
+    .hero-content p {
+        text-align: center;
+    }
+}
+
+/* ═══════════════════════════
+   ULTRA-SMALL MOBILE (320px and below)
+═══════════════════════════ */
+@media (max-width: 360px) {
+    nav {
+        padding: 10px 16px; /* Shrinks container spacing so buttons don't clip */
+        gap: 12px;
+    }
+
+    .logo img {
+        height: 45px; /* Scales down the header logo so it fits alongside buttons */
+    }
+
+    .btn-login {
+        padding: 6px 16px; /* Makes the login button thumb-friendly but compact */
+        font-size: 0.8rem;
+    }
+
+    .hamburger {
+        font-size: 1.5rem; /* Scales down hamburger slightly */
+    }
+
+    .hero-content {
+        padding-top: 90px; /* Prevents header from hiding top elements */
+    }
+
+    .main-logo img {
+        height: 110px; /* Scales down the big center logo */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem; /* Softens big heading text so it doesn't split awkwardly into single letters */
+    }
+
+    .hero-content p {
+        font-size: 0.85rem; /* Keeps line lengths comfortable to read */
+    }
+}
 
 /* ═══════════════════════════
    INLINE ERROR STYLES
@@ -718,104 +840,4 @@ footer .foot_list {
     margin-top: 6px;
     margin-left: 4px;
     min-height: 1em;
-}
-
-/* ═══════════════════════════
-   MOBILE VERSION (320px Safe)
-═══════════════════════════ */
-@media (max-width: 768px) {
-    
-    /* ── 1. NAVBAR & HAMBURGER ── */
-    nav {
-        padding: 12px 20px; /* Shrink padding to fit small phone screens */
-        gap: 15px;
-    }
-    nav.scrolled {
-        padding: 10px 20px;
-    }
-    .logo img {
-        height: 50px; /* Shrink logo */
-        filter: brightness(0) invert(1);
-    }
-    .btn-login {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-    .hamburger {
-        display: block; /* Reveals the hamburger button */
-        margin-left: 10px;
-    }
-    
-    /* Converts the standard nav links into a hidden dropdown menu */
-    .nav-links {
-        display: none; 
-        position: absolute;
-        top: 100%; /* Drops exactly below the navbar */
-        left: 0;
-        width: 100%;
-        background: rgba(65, 38, 17, 0.98);
-        backdrop-filter: blur(8px);
-        flex-direction: column;
-        padding: 20px 0;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .nav-links.open {
-        display: flex; /* The JS toggleMenu() function turns this on! */
-    }
-
-    /* ── 2. HERO SECTION FIXES ── */
-    .hero-left-bg {
-        display: none; /* Hides the left background as requested */
-    }
-    .hero-right-photo {
-        width: 100%; /* Let the right photo take over */
-        filter: brightness(0.6); /* Darken slightly so white text remains readable */
-    }
-    
-    /* Re-center the hero content so it doesn't clip off the right edge of a 320px phone */
-    .hero-content {
-        padding: 120px 20px 40px; 
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .main-logo { margin-left: 0; }
-    .main-logo img {
-        height: auto;
-        width: 100%;
-        max-width: 260px; /* Crucial for 320px safety */
-    }
-    .hero-content h1 {
-        padding-left: 0;
-        margin-top: 15px;
-        font-size: 2.2rem;
-        text-align: center;
-    }
-    .hero-content p {
-        margin-left: 0;
-        text-align: center;
-        font-size: 0.95rem;
-    }
-
-    /* ── 3. ADVENTURE & FOOTER FIXES ── */
-    .adventure-container {
-        flex-direction: column; 
-        text-align: center;
-        gap: 40px;
-    }
-    .adventure-features li { padding-left: 0; }
-    .adventure-features li::before { display: none; }
-    
-    .adventure-left h2 { font-size: 2rem; }
-    
-    .pet-card {
-        padding: 20px; /* Slight padding reduction to fit 320px margins */
-    }
-    
-    .foot_list a {
-        font-size: 0.6rem;
-        margin: 10px 15px; /* Allows the footer links to wrap safely */
-    }
 }

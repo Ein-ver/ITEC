@@ -569,3 +569,52 @@ body {
     animation: floatUp 1.2s ease forwards;
     z-index: 9999;
 }
+
+/* Hide hamburger on desktop */
+.hamburger { display: none; }
+
+/* ══════════════════════════════════════════════════
+   MOBILE VIEW (ENABLES TOP TAB BAR FOR EASY THINGIE)
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* Navbar & Hamburger */
+    .game-nav { padding: 0 16px; justify-content: space-between; }
+    .nav-logo img { height: 45px; }
+    .hamburger { display: block; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
+    
+    .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; width: 100%;
+        background: rgba(217, 123, 79, 0.98); backdrop-filter: blur(8px);
+        flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+
+    /* Scrollable Top Tab Bar */
+    .page-layout { flex-direction: column; }
+    .sidebar {
+        width: 100%; padding: 0; flex-direction: row; overflow-x: auto;
+        white-space: nowrap; scrollbar-width: none;
+    }
+    .sidebar::-webkit-scrollbar { display: none; }
+    .sidebar-btn { border-radius: 0; padding: 16px 24px; border-bottom: 3px solid transparent; }
+    .sidebar-btn.active { border-bottom: 3px solid var(--beige); }
+
+    /* Main Content & Tasks Fixes */
+    .main-content { padding: 20px 15px; }
+    .section-panel { flex-direction: column; gap: 30px; }
+    .panel-left, .panel-right { max-width: 100%; }
+
+    /* Stack the task list items vertically for 320px */
+    .task-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 15px;
+    }
+    .task-info { align-items: center; } /* Center text */
+    .btn-complete { width: 100%; } /* Full-width button for easy tapping */
+
+    /* Modal Fixes */
+    .energy-warning-card { padding: 20px 15px; width: 95%; }
+    .energy-title { font-size: 2rem; }
+}

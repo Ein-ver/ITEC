@@ -17,18 +17,16 @@
         <a href="../WebIndex/index.html" class="nav-logo">
             <img src="../Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
         </a>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="../WebAdventure/dailytask.html">GAME</a>
             <a href="coupons.html" class="active">COUPAWS</a>
+            <div class="nav-right" id="navRight"></div>
         </div>
-        <div class="nav-right" id="navRight">
-            <!-- Populated by JS depending on login state -->
-        </div>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
     </nav>
 
     <div class="page-layout">
 
-        <!-- SEARCH + COINS BAR -->
         <div class="top-bar">
             <div class="search-wrap">
                 <input type="text" id="searchInput" placeholder="SEARCH FOR COUPONS...">
@@ -37,13 +35,16 @@
                 <img src="../Assets/Pawrency.webp" alt="coins" class="coin-icon">
                 <span id="userCoins">0</span>
             </div>
+            <button class="btn-mobile-filter" onclick="toggleFilters()">
+                FILTER
+            </button>
         </div>
 
         <div class="content-layout">
 
             <!-- LEFT SIDEBAR FILTERS -->
             <aside class="filter-sidebar">
-
+                <button class="btn-close-filters" onclick="toggleFilters()">APPLY</button>
                 <div class="filter-group">
                     <div class="filter-header">
                         <span class="filter-title">Price</span>

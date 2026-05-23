@@ -1,4 +1,15 @@
 // ═══════════════════════════════════════
+// 0. MOBILE MENUS (Hamburger & Filters)
+// ═══════════════════════════════════════
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+}
+
+function toggleFilters() {
+    document.querySelector('.filter-sidebar').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════
 // AUTH STATE
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));

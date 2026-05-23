@@ -1,3 +1,10 @@
+// ═══════════════════════════════════════
+// 0. MOBILE MENU TOGGLE
+// ═══════════════════════════════════════
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+}
+
 // GLOBAL
 // ----------------------
 let pendingEnergyCallback = null;
@@ -5,7 +12,6 @@ const energyModal      = document.getElementById('energyWarningModal');
 const btnEnergyConfirm = document.getElementById('btnEnergyConfirm');
 const btnEnergyCancel  = document.getElementById('btnEnergyCancel');
 
-//
 
 // ═══════════════════════════════════════
 // 1. AUTH GUARD + LOAD USER

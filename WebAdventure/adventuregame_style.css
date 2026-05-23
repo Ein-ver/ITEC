@@ -530,3 +530,59 @@ body {
     transition: background 0.2s;
 }
 .btn-quit:hover { background: var(--brown); }
+
+/* Hide hamburger on desktop */
+.hamburger { display: none; }
+
+/* ══════════════════════════════════════════════════
+   MOBILE VIEW (ENABLES TOP TAB BAR FOR EASY THINGIE)
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* Navbar & Hamburger */
+    .game-nav { padding: 0 16px; justify-content: space-between; }
+    .nav-logo img { height: 45px; }
+    .hamburger { display: block; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
+    
+    .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; width: 100%;
+        background: rgba(217, 123, 79, 0.98); backdrop-filter: blur(8px);
+        flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+
+    /* Scrollable Top Tab Bar */
+    .page-layout { flex-direction: column; }
+    .sidebar {
+        width: 100%; padding: 0; flex-direction: row; overflow-x: auto;
+        white-space: nowrap; scrollbar-width: none;
+    }
+    .sidebar::-webkit-scrollbar { display: none; }
+    .sidebar-btn { border-radius: 0; padding: 16px 24px; border-bottom: 3px solid transparent; }
+    .sidebar-btn.active { border-bottom: 3px solid var(--beige); }
+
+    /* Combat Arena Fixes */
+    .main-content { padding: 15px; }
+    
+    /* Stacks the Pet and Enemy on top of each other! */
+    .game-arena {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+    }
+    .pet-combat-side, .enemy-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Adjusts the VS badge to overlap vertically instead of horizontally */
+    .vs-badge {
+        margin: -15px auto; 
+        position: relative;
+        z-index: 2;
+        transform: rotate(10deg); /* Keep a slight tilt for style */
+    }
+
+    /* Modal Fixes */
+    .lose-card, .tutorial-card { padding: 25px 20px; width: 95%; }
+    .lose-title { font-size: 2.2rem; }
+}
