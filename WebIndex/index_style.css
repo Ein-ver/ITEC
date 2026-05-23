@@ -7,7 +7,7 @@
 /* === FONTS === */
 @font-face {
     font-family: 'Nunito';
-    src: url(/Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: 'Nunito';
-    src: url(/Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -23,7 +23,7 @@
 
 @font-face {
     font-family: 'Gagalin';
-    src: url(/Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -31,7 +31,7 @@
 
 @font-face {
     font-family: 'ArchivoBlack';
-    src: url(/Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -39,7 +39,7 @@
 
 @font-face {
     font-family: 'Archive';
-    src: url(/Fonts/archive/Archive.otf) format('opentype');
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -47,7 +47,7 @@
 
 @font-face {
     font-family: 'EtnaSerif';
-    src: url(/Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -149,14 +149,14 @@ nav.scrolled {
 }
 
 .hero-left-bg {
-    background-image: url('/Assets/Home_BG.webp');
+    background-image: url('../Assets/Home_BG.webp');
     background-size: cover;
     background-position: left center;
     z-index: 2;
 }
 
 .hero-right-photo {
-    background-image: url('/Assets/Home_Pets.webp');
+    background-image: url('../Assets/Home_Pets.webp');
     background-size: cover;
     background-position: right center;
     z-index: 1;
