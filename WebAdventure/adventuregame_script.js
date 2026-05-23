@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════
-// 1. AUTH GUARD + LOAD USER
+// AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!currentUser) window.location.href = '../WebIndex/index.html';
@@ -11,7 +11,7 @@ const STARTING_BONES = 5;
 const ATTACK_INTERVAL_MS = 3000; // pet attacks every 3 seconds
 
 // ═══════════════════════════════════════
-// 2. GAME STATE
+// GAME INI
 // ═══════════════════════════════════════
 let gameRunning  = false;
 let attackTimer  = null;
@@ -36,7 +36,7 @@ const ENEMY_POOL = [
 ];
 
 // ═══════════════════════════════════════
-// 3. LOAD ACCOUNT DATA
+// LOAD ACCOUNT DATA
 // ═══════════════════════════════════════
 function loadAccount() {
     accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
@@ -56,7 +56,7 @@ function saveAccount() {
 }
 
 // ═══════════════════════════════════════
-// 4. POPULATE PET CARD
+// POPULATE PET CARD
 // ═══════════════════════════════════════
 function populateArenaCard() {
     document.getElementById('arenaCardName').textContent  = acc.petName  || 'PET NAME';
@@ -76,7 +76,7 @@ function populateArenaCard() {
 }
 
 // ═══════════════════════════════════════
-// 5. UPDATE HUD
+// UPDATE HUD
 // ═══════════════════════════════════════
 function updateHUD() {
     document.getElementById('bonesCount').textContent   = bones;
@@ -86,7 +86,7 @@ function updateHUD() {
 }
 
 // ═══════════════════════════════════════
-// 6. SPAWN ENEMY
+// SPAWN ENEMY
 // ═══════════════════════════════════════
 function spawnEnemy() {
     // Pick random enemy from pool
@@ -120,7 +120,7 @@ function spawnEnemy() {
 }
 
 // ═══════════════════════════════════════
-// 7. ATTACK LOOP
+// ATTACK LOOP
 // ═══════════════════════════════════════
 function attackLoop() {
     if (!gameRunning) return;
@@ -188,7 +188,7 @@ function enemyDefeated() {
 }
 
 // ═══════════════════════════════════════
-// 8. DAMAGE POPUP
+// DAMAGE POPUP
 // ═══════════════════════════════════════
 function showDmgPopup(cardClass, text) {
     const card  = document.querySelector(`.${cardClass}`) || document.getElementById(cardClass);
@@ -204,7 +204,7 @@ function showDmgPopup(cardClass, text) {
 }
 
 // ═══════════════════════════════════════
-// 9. START GAME
+// START GAME
 // ═══════════════════════════════════════
 function startGame() {
     // Deduct 20% energy
@@ -225,7 +225,7 @@ function startGame() {
 }
 
 // ═══════════════════════════════════════
-// 10. LOSE
+// LOSE
 // ═══════════════════════════════════════
 function triggerLose() {
     gameRunning = false;
@@ -237,7 +237,7 @@ function triggerLose() {
 }
 
 // ═══════════════════════════════════════
-// 11. WARN ON TAB CLOSE DURING GAME
+// WARN ON TAB CLOSE DURING GAME
 // ═══════════════════════════════════════
 window.addEventListener('beforeunload', (e) => {
     if (gameRunning) {
@@ -247,7 +247,7 @@ window.addEventListener('beforeunload', (e) => {
 });
 
 // ═══════════════════════════════════════
-// 12. TUTORIAL SYSTEM
+// TUTORIAL
 // ═══════════════════════════════════════
 const tutorialSteps = [
     "Try not to make the enemy get your bone by knocking them out in one-shot!",

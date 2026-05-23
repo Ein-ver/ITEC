@@ -483,7 +483,7 @@ body {
 ═══════════════════════ */
 .lose-card {
     background: #f5e6d6;
-    border-radius: 24px;
+    border-radius: 15px;
     padding: 40px 36px;
     max-width: 420px;
     width: 90%;
@@ -491,11 +491,12 @@ body {
     box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
 }
 
 .lose-title {
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: 'EtnaSans', sans-serif;
+    font-weight: 800;
     font-size: 2.5rem;
     color: var(--orange-dark);
 }
@@ -503,7 +504,7 @@ body {
 .lose-sub { font-size: 0.9rem; color: #7a5a40; }
 
 .lose-km {
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: 'LeagueSpartan', sans-serif;
     font-size: 2rem;
     color: #2a1a0a;
 }

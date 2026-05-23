@@ -1,0 +1,51 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* VARIABLE */
+:root {
+    --orange:       #d97b4f;
+    --beige:        #f0e0d0;
+    --text-dark:   #3b1f0e;
+    --nav-h:        64px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    padding-top: var(--nav-h);
+    background: var(--beige);
+    color: var(--text-dark);
+    min-height: 100vh;           
+    padding-top: 110px; 
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NAVBAR */
+.profile-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

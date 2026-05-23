@@ -220,3 +220,127 @@ if (btnLogout) {
         window.location.href = '../WebIndex/index.html';
     });
 }
+
+
+// ═══════════════════════════════════════
+// 8. LOAD OWNED COUPONS IN COUPAWS TAB
+// ═══════════════════════════════════════
+
+// Must match the ALL_COUPONS array in coupons_script.js
+const ALL_COUPONS = [
+    { id: 'spotify', brand: 'SPOTIFY', offer: '2 months Premium – 60% Discount', tagLabel: 'HOOMAN, LEISURE', cost: 100, code: 'PETMALU-SPT-2024' },
+    { id: 'pedigree', brand: 'PEDIGREE', offer: '40% Discount on Adult: Roasted Chicken Flavor', tagLabel: 'PETS, FOOD', cost: 250, code: 'PETMALU-PDG-40OFF' },
+    { id: 'petstyle', brand: 'PETSTYLE PH', offer: '15% Off Accessories', tagLabel: 'PET, ACCESSORY', cost: 300, code: 'PETMALU-PST-15ACC' },
+    { id: 'whiskers', brand: 'WHISKERS', offer: 'Buy 2 Get 1 Cat Treats', tagLabel: 'PET, FOOD', cost: 300, code: 'PETMALU-WSK-B2G1' },
+    { id: 'vetcare', brand: 'VETCARE CLINIC', offer: 'Free Initial Consultation', tagLabel: 'PET, FOOD', cost: 400, code: 'PETMALU-VTC-FREE1' },
+];
+
+function loadInventory() {
+    const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
+    const index = accounts.findIndex(acc => acc.email === currentUser.email);
+    if (index === -1) return;
+
+    const inventory = accounts[index].inventory || [];
+    const container = document.querySelector('#section-coupaws .panel-left');
+    if (!container) return;
+
+    // Clear placeholder
+    container.innerHTML = '<h2 class="section-title">COUPAWS:</h2>';
+
+    if (inventory.length === 0) {
+        container.innerHTML += '<p class="placeholder-text">Your Coupaws will appear here once you start buying!</p>';
+        return;
+    }
+
+    // Build owned coupon list
+    const list = document.createElement('div');
+    list.style.cssText = 'display: flex; flex-direction: column; gap: 12px; margin-top: 16px;';
+
+    inventory.forEach(id => {
+        const coupon = ALL_COUPONS.find(c => c.id === id);
+        if (!coupon) return;
+
+        const item = document.createElement('div');
+        item.style.cssText = `
+            background: #6b4226;
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        `;
+        item.innerHTML = `
+    <div style="flex:1;">
+        <div style="font-family:'LeagueSpartan',sans-serif; color:white; font-size:1.2rem; font-weight: 600;">
+            ${coupon.brand}
+        </div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.8); margin-top:4px;">
+            ${coupon.offer}
+        </div>
+        <div style="font-size:0.7rem; color:rgba(255,255,255,0.5); margin-top:2px;">
+            TAGS: ${coupon.tagLabel}
+        </div>
+
+        <!-- COUPON CODE (hidden by default) -->
+        <div class="coupon-code-box" id="code-${coupon.id}" style="
+            display: none;
+            margin-top: 10px;
+            background: rgba(0,0,0,0.25);
+            border-radius: 10px;
+            padding: 8px 14px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        ">
+            <span style="
+                font-family: monospace;
+                font-size: 0.95rem;
+                color: #f0c080;
+                letter-spacing: 2px;
+                font-weight: bold;
+            ">${coupon.code}</span>
+            <button onclick="navigator.clipboard.writeText('${coupon.code}')" style="
+                background: none; border: none;
+                color: rgba(255,255,255,0.6);
+                font-size: 0.75rem; cursor: pointer;
+                text-decoration: underline;
+            ">copy</button>
+        </div>
+    </div>
+
+    <!-- SHOW/HIDE BUTTON -->
+    <button class="btn-toggle-code" data-id="${coupon.id}" style="
+        background: #d97b4f; color: white; border: none;
+        padding: 8px 16px; border-radius: 20px;
+        font-family: 'Nunito', sans-serif; font-weight: 700;
+        font-size: 0.82rem; cursor: pointer; white-space: nowrap;
+        flex-shrink: 0; transition: background 0.2s;
+    ">SHOW CODE</button>
+`;
+
+        // Toggle show/hide code
+        item.querySelector('.btn-toggle-code').addEventListener('click', (e) => {
+            const btn = e.currentTarget;
+            const codeBox = document.getElementById(`code-${coupon.id}`);
+            const isHidden = codeBox.style.display === 'none' || codeBox.style.display === '';
+
+            codeBox.style.display = isHidden ? 'flex' : 'none';
+            btn.textContent = isHidden ? 'HIDE CODE' : 'SHOW CODE';
+            btn.style.background = isHidden ? '#b85e32' : '#d97b4f';
+        });
+
+        list.appendChild(item);
+    });
+
+    container.appendChild(list);
+}
+
+loadInventory();
+
+// Reload inventory when switching to Coupaws tab
+sidebarBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (btn.dataset.section === 'coupaws') loadInventory();
+    });
+});

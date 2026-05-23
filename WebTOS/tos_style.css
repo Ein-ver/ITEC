@@ -1,0 +1,183 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* VARIABLE */
+:root {
+    --orange:       #d97b4f;
+    --beige:        #f0e0d0;
+    --text-dark:   #3b1f0e;
+    --nav-h:        64px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    padding-top: var(--nav-h);
+    background: var(--beige);
+    color: var(--text-dark);
+    min-height: 100vh;           
+    padding-top: 110px; 
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NAVBAR */
+.profile-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tos_display {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    border: 4px solid var(--text-dark, #412611);
+    background-color: var(--panel-bg, #cbcbc9);
+    border-radius: 24px;
+    padding: 35px;
+    
+    width: 90%;                  
+    max-width: 670px;            
+    min-height: 450px;           
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    
+    margin: 40px 0;             
+}
+
+.tos_display h1 {
+    font-family: 'OpenSauceB', sans-serif;
+}
+
+.tos_display h3 {
+    margin-top: 20px;
+}
+
+.tos_display hr {
+    margin-bottom: 40px;
+}
+
+.tos_display p {
+    text-align: justify;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,629 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(../Fonts/Work_Sans/WorkSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url(../Fonts/League_Spartan/league-spartan.bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --orange: #d97b4f;
+    --orange-dark: #b85e32;
+    --brown: #7a3b1e;
+    --brown-card: #6b4226;
+    --beige: #f0e0d0;
+    --nav-h: 64px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--beige);
+    min-height: 100vh;
+    padding-top: var(--nav-h);
+}
+
+/* ═══════════════════════
+   NAVBAR
+═══════════════════════ */
+.game-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-h);
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-logo img {
+    height: 70px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-profile {
+    color: white;
+    text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.btn-profile:hover {
+    opacity: 0.75;
+}
+
+.btn-nav-login {
+    background: var(--orange-dark);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btn-nav-login:hover {
+    background: var(--brown);
+}
+
+.btn-logout {
+    background: var(--orange-dark);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-logout:hover {
+    background: var(--brown);
+    transform: scale(1.04);
+}
+
+/* ═══════════════════════
+   PAGE LAYOUT
+═══════════════════════ */
+.page-layout {
+    padding: 24px 32px;
+}
+
+/* ═══════════════════════
+   TOP BAR
+═══════════════════════ */
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.search-wrap {
+    flex: 1;
+    max-width: 680px;
+}
+
+.search-wrap input {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 30px;
+    border: 2px solid #c4a090;
+    background: #faf0e8;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #5a3a20;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-wrap input:focus {
+    border-color: var(--orange);
+}
+
+.search-wrap input::placeholder {
+    color: #b09080;
+}
+
+.coins-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.4rem;
+    color: #2a1a0a;
+    margin-left: auto;
+}
+
+.coin-icon {
+    height: 36px;
+    width: auto;
+}
+
+.coin-icon-sm {
+    height: 18px;
+    width: auto;
+    vertical-align: middle;
+}
+
+/* ═══════════════════════
+   CONTENT LAYOUT
+═══════════════════════ */
+.content-layout {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+}
+
+/* ═══════════════════════
+   FILTER SIDEBAR
+═══════════════════════ */
+.filter-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.filter-title {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1rem;
+    color: #2a1a0a;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: var(--orange-dark);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.btn-clear:hover {
+    color: var(--brown);
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #5a3a20;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
+.filter-option input {
+    accent-color: var(--orange);
+    cursor: pointer;
+}
+
+.filter-option.sub {
+    padding-left: 16px;
+}
+
+.filter-option.sub::before {
+    content: "└";
+    color: #b09080;
+    margin-right: -4px;
+}
+
+.filter-parent {
+    font-size: 0.9rem;
+    color: #5a3a20;
+    margin-top: 6px;
+    display: block;
+}
+
+/* ═══════════════════════
+   COUPON GRID
+═══════════════════════ */
+.coupon-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #b09080;
+    font-size: 1rem;
+    padding: 40px;
+}
+
+/* ═══════════════════════
+   COUPON CARD
+═══════════════════════ */
+.coupon-card {
+    background: var(--brown-card);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.coupon-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Left image section */
+.coupon-img {
+    width: 110px;
+    flex-shrink: 0;
+    background: #c4dce8;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.coupon-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coupon-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #b8d8e8 60%, #6a9e40 60%);
+}
+
+/* Right content section */
+.coupon-info {
+    flex: 1;
+    padding: 14px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.coupon-brand {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.coupon-offer {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.coupon-detail {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+    flex: 1;
+}
+
+.coupon-tags {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* Buy button row */
+.coupon-buy-row {
+    margin-top: 8px;
+}
+
+.btn-buy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-buy:hover {
+    background: var(--orange-dark);
+}
+
+/* Locked state — not logged in or not enough coins */
+.btn-buy.locked {
+    background: #8a5a40;
+    cursor: not-allowed;
+    color: #ff9080;
+}
+
+.btn-buy.locked:hover {
+    background: #8a5a40;
+}
+
+/* ═══════════════════════
+   MODALS
+═══════════════════════ */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 500;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.buy-card {
+    background: #f5e6d6;
+    border-radius: 24px;
+    padding: 36px 32px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.buy-title {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.6rem;
+    color: #2a1a0a;
+}
+
+.buy-desc {
+    font-size: 0.95rem;
+    color: #5a3a20;
+    font-weight: 600;
+}
+
+.buy-detail {
+    font-size: 0.82rem;
+    color: #8a6a50;
+    line-height: 1.5;
+}
+
+.buy-cost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.4rem;
+    color: var(--orange-dark);
+    margin: 4px 0;
+}
+
+.buy-confirm-text {
+    font-size: 0.85rem;
+    color: #7a5a40;
+}
+
+.buy-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-confirm-buy {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 30px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-confirm-buy:hover {
+    background: var(--orange-dark);
+}
+
+.btn-cancel-buy {
+    background: transparent;
+    color: var(--orange-dark);
+    border: 2px solid var(--orange);
+    padding: 13px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cancel-buy:hover {
+    background: #f5ddd0;
+}
+
+.success-icon {
+    font-size: 2.5rem;
+}

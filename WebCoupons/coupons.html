@@ -1,12 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/Assets/FaviconLogo.ico" type="image/x-icon">
-    <title>Coupaws</title>
+    <title>Coupawows...</title>
+    <link rel="shortcut icon" href="../Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="coupons_style.css">
+    <script src="coupons_script.js" defer></script>
 </head>
+
 <body>
-    
+
+    <!-- NAVBAR -->
+    <nav class="game-nav">
+        <a href="../WebIndex/index.html" class="nav-logo">
+            <img src="../Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+        <div class="nav-links">
+            <a href="../WebAdventure/dailytask.html">GAME</a>
+            <a href="coupons.html" class="active">COUPAWS</a>
+        </div>
+        <div class="nav-right" id="navRight">
+            <!-- Populated by JS depending on login state -->
+        </div>
+    </nav>
+
+    <div class="page-layout">
+
+        <!-- SEARCH + COINS BAR -->
+        <div class="top-bar">
+            <div class="search-wrap">
+                <input type="text" id="searchInput" placeholder="SEARCH FOR COUPONS...">
+            </div>
+            <div class="coins-display" id="coinsDisplay" style="display:none;">
+                <img src="../Assets/Pawrency.webp" alt="coins" class="coin-icon">
+                <span id="userCoins">0</span>
+            </div>
+        </div>
+
+        <div class="content-layout">
+
+            <!-- LEFT SIDEBAR FILTERS -->
+            <aside class="filter-sidebar">
+
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span class="filter-title">Price</span>
+                        <button class="btn-clear" id="clearPrice">← CLEAR</button>
+                    </div>
+                    <label class="filter-option">
+                        <input type="radio" name="price" value="low-high"> Lowest – Highest
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price" value="high-low"> Highest – Lowest
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="price" value="affordable"> Can be bought
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <span class="filter-title">Category</span>
+                        <button class="btn-clear" id="clearCategory">← CLEAR</button>
+                    </div>
+
+                    <span class="filter-parent">Pets</span>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="pet-food"> Food
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="pet-grooming"> Grooming
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="pet-accessory"> Accessories
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="pet-veterinary"> Veterinary
+                    </label>
+
+                    <span class="filter-parent">Hoomans</span>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="hooman-food"> Food
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="hooman-fashion"> Fashion
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="hooman-accessory"> Accessories
+                    </label>
+                    <label class="filter-option sub">
+                        <input type="checkbox" value="hooman-leisure"> Leisure
+                    </label>
+                </div>
+
+            </aside>
+
+            <!-- COUPON GRID -->
+            <div class="coupon-grid" id="couponGrid">
+                <!-- Populated by JS -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BUY CONFIRM MODAL -->
+    <div class="modal-overlay" id="buyModal">
+        <div class="buy-card">
+            <h2 class="buy-title" id="buyModalTitle">SPOTIFY</h2>
+            <p class="buy-desc" id="buyModalDesc">2 months Premium – 60% Discount</p>
+            <p class="buy-detail" id="buyModalDetail"></p>
+            <div class="buy-cost">
+                <img src="../Assets/Pawrency.webp" class="coin-icon-sm" alt="coin">
+                <span id="buyModalCost">100</span>
+            </div>
+            <p class="buy-confirm-text">Are you sure you want to buy this coupon?</p>
+            <div class="buy-btns">
+                <button class="btn-confirm-buy" id="btnConfirmBuy">BUY</button>
+                <button class="btn-cancel-buy" id="btnCancelBuy">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay" id="successModal">
+        <div class="buy-card">
+            <div class="success-icon">🐾</div>
+            <h2 class="buy-title">PURCHASED!</h2>
+            <p class="buy-desc" id="successMsg">Coupon added to your inventory.</p>
+            <button class="btn-confirm-buy" id="btnSuccessClose">NICE!</button>
+        </div>
+    </div>
+
 </body>
+
 </html>
