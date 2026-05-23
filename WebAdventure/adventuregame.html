@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Time!</title>
+    <link rel="shortcut icon" href="/Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="adventuregame_style.css">
+    <script src="adventuregame_script.js" defer></script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="game-nav">
+        <a href="/WebIndex/index.html" class="nav-logo">
+            <img src="/Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+        <div class="nav-links">
+            <a href="/WebAdventure/dailytask.html" class="active">GAME</a>
+            <a href="#">COUPAWS</a>
+        </div>
+        <div class="nav-right">
+            <a href="/WebSettings/setting.html" class="btn-profile">PROFILE</a>
+            <button class="btn-logout" id="btnLogout">Log out</button>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="/WebAdventure/dailytask.html" class="sidebar-btn">DAILY TASKS</a>
+            <button class="sidebar-btn active">ADVENTURE</button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP BAR: Bones + KM + Coins -->
+            <div class="top-bar">
+                <div class="bones-counter">
+                    <span id="bonesCount">5</span>
+                    <img src="/Assets/bone.webp" alt="bones" class="bone-icon">
+                </div>
+                <div class="km-display">
+                    <div class="km-value"><span id="kmCount">0</span> KM</div>
+                    <div class="km-highscore">High Score: <span id="kmHighScore">0</span> KM</div>
+                </div>
+                <div class="coins-counter">
+                    <img src="/Assets/Pawrency.webp" alt="coins" class="coin-icon">
+                    <span id="coinsCount">0</span>
+                </div>
+            </div>
+
+            <!-- GAME ARENA -->
+            <div class="game-arena" id="gameArena">
+
+                <!-- PET CARD (left) -->
+                <div class="arena-card pet-side">
+                    <div class="card-top-layout">
+                        <div class="pet-name-vertical" id="arenaCardName">PET NAME</div>
+                        <div class="pet-image-container">
+                            <div class="pet-image-placeholder" id="arenaPetPlaceholder">
+                                <span>PET PICTURE<br>HERE</span>
+                            </div>
+                            <img id="arenaPetImg" src="" alt="Pet" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="card-title-divider">
+                        <span class="paw-icon">🐾</span>
+                        <span class="card-label">TITLE</span>
+                        <span class="paw-icon">🐾</span>
+                    </div>
+                    <div class="card-pet-title" id="arenaCardTitle">YOUR PET TITLE</div>
+                    <div class="card-stats-layout">
+                        <div class="level-container">
+                            <label>LEVEL:</label>
+                            <div class="xp-bar">
+                                <div class="xp-progress" id="arenaXpBar" style="width: 2%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-box">
+                                <span class="stat-label">PAW-ER:</span>
+                                <strong class="stat-value" id="arenaPawer">2 PAWS</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">ENERGY:</span>
+                                <strong class="stat-value" id="arenaEnergy">100%</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-badge" id="arenaLevelBadge">LVL 1:</div>
+                </div>
+
+                <!-- START BUTTON (shown before game starts) -->
+                <div class="start-zone" id="startZone">
+                    <button class="btn-start-adventure" id="btnStartAdventure">
+                        START ADVENTURE<br><small>(-20% Energy)</small>
+                    </button>
+                </div>
+
+                <!-- ENEMY CARD (right, hidden until game starts) -->
+                <div class="arena-card enemy-side hidden" id="enemyCard">
+                    <div class="card-top-layout">
+                        <div class="pet-name-vertical" id="enemyName">ENEMY</div>
+                        <div class="pet-image-container enemy-img-container">
+                            <div class="pet-image-placeholder">
+                                <span>ENEMY PICTURE<br>HERE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-title-divider">
+                        <span class="paw-icon">🐾</span>
+                        <span class="card-label">TITLE</span>
+                        <span class="paw-icon">🐾</span>
+                    </div>
+                    <div class="card-pet-title" id="enemyTitle">ENEMY NAME</div>
+                    <div class="enemy-stats">
+                        <div class="enemy-stat-row">
+                            <span class="stat-label">HEALTH:</span>
+                            <strong class="stat-value" id="enemyHealth">2 PAWS</strong>
+                        </div>
+                        <div class="enemy-stat-row">
+                            <span class="stat-label">COIN DROP:</span>
+                            <strong class="stat-value">
+                                <img src="/Assets/Pawrency.webp" class="coin-icon-sm" alt="coin">
+                                <span id="enemyCoinDrop">2</span>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end game-arena -->
+
+        </main>
+    </div>
+
+    <!-- ══════════════════════════════
+         TUTORIAL MODAL (6 steps)
+    ══════════════════════════════ -->
+    <div class="modal-overlay" id="tutorialModal">
+        <div class="tutorial-card">
+            <p class="tutorial-text" id="tutorialText"></p>
+            <button class="btn-tutorial-next" id="btnTutorialNext">Next</button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         LOSE MODAL
+    ══════════════════════════════ -->
+    <div class="modal-overlay" id="loseModal">
+        <div class="lose-card">
+            <h2 class="lose-title">YOU LOSE</h2>
+            <p class="lose-sub">you reached:</p>
+            <div class="lose-km"><span id="loseKm">0</span> KM</div>
+            <div class="lose-highscore">High Score: <span id="loseHighScore">0</span> KM</div>
+            <button class="btn-try-again" id="btnTryAgain">TRY AGAIN (-20% Energy)</button>
+            <button class="btn-quit" id="btnQuit">QUIT</button>
+        </div>
+    </div>
+
+</body>
+</html>

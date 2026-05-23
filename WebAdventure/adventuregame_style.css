@@ -1,0 +1,531 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(/Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(/Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(/Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(/Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(/Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(/Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(/Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(/Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(/Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(/Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(/Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(/Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(/Fonts/Work_Sans/WorkSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url(/Fonts/League_Spartan/league-spartan.bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --orange:      #d97b4f;
+    --orange-dark: #b85e32;
+    --brown:       #7a3b1e;
+    --beige:       #f0e0d0;
+    --nav-h:       64px;
+    --sidebar-w:   220px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #f5ede3;
+    min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* ═══════════════════════
+   NAVBAR
+═══════════════════════ */
+.game-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.nav-logo img { height: 70px; width: auto; filter: brightness(0) invert(1); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem; letter-spacing: 1px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: white; }
+.nav-links a.active { color: white; }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.btn-profile {
+    color: white; text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem; letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+.btn-profile:hover { opacity: 0.75; }
+.btn-logout {
+    background: var(--orange-dark); color: white; border: none;
+    padding: 10px 24px; border-radius: 30px;
+    font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 700;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+}
+.btn-logout:hover { background: var(--brown); transform: scale(1.04); }
+
+/* ═══════════════════════
+   LAYOUT
+═══════════════════════ */
+.page-layout {
+    display: flex;
+    margin-top: var(--nav-h);
+    min-height: calc(100vh - var(--nav-h));
+}
+
+.sidebar {
+    width: var(--sidebar-w);
+    background: var(--brown);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.sidebar-btn {
+    background: none; border: none; color: white;
+    font-family: 'OpenSauce', sans-serif;
+    font-weight: 600; font-size: 1.1rem; letter-spacing: 1px;
+    padding: 16px 32px; text-align: left;
+    cursor: pointer; transition: background 0.2s;
+    border-radius: 0 30px 30px 0;
+    margin-right: 16px;
+    text-decoration: none; 
+    /*display: block;  <-- DESTROYED IT BRUH */
+}
+.sidebar-btn:hover { background: rgba(255,255,255,0.12); }
+.sidebar-btn.active { background: #f0e0d0; color: var(--brown); }
+
+.main-content { flex: 1; padding: 32px 48px; overflow-y: auto; }
+
+/* ═══════════════════════
+   TOP BAR
+═══════════════════════ */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.bones-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: white;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    min-width: 90px;
+}
+.bone-icon { height: 30px; width: auto; }
+
+.km-display { text-align: center; }
+.km-value {
+    font-family: 'LeagueSpartan', sans-serif;
+    font-size: 2rem;
+    color: #2a1a0a;
+    letter-spacing: 1px;
+}
+.km-highscore {
+    font-size: 0.85rem;
+    color: #7a5a40;
+}
+
+.coins-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.3rem;
+    color: #2a1a0a;
+}
+.coin-icon { height: 60px; width: auto; }
+.coin-icon-sm { height: 30px; width: auto; vertical-align: middle; }
+
+/* ═══════════════════════
+   GAME ARENA
+═══════════════════════ */
+.game-arena {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+/* ═══════════════════════
+   ARENA CARDS
+═══════════════════════ */
+.arena-card {
+    background-color: #cbcbc9;
+    width: 280px;
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.card-top-layout { display: flex; align-items: center; gap: 10px; }
+
+.pet-name-vertical {
+    font-family: 'Archive', sans-serif;
+    font-size: 1.4rem; color: #000;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 2px;
+}
+
+.pet-image-container {
+    flex: 1;
+    background: #738c31;
+    border-radius: 18px;
+    height: 160px;
+    overflow: hidden;
+}
+.enemy-img-container { background: #8c4b31; }
+
+.pet-image-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center;
+    justify-content: center; text-align: center;
+    font-family: 'Gagalin', sans-serif;
+    font-size: 0.8rem; color: white;
+}
+
+#arenaPetImg { width: 100%; height: 100%; object-fit: cover; }
+
+.card-title-divider {
+    display: flex; align-items: center;
+    justify-content: center; gap: 8px;
+}
+.card-title-divider::before,
+.card-title-divider::after {
+    content: ""; flex: 1; height: 2px; background: #433530;
+}
+.card-label {
+    font-family: Arial, sans-serif; font-weight: bold;
+    font-size: 0.7rem; color: var(--orange-dark); letter-spacing: 2px;
+}
+.paw-icon { font-size: 0.9rem; }
+
+.card-pet-title {
+    font-family: Arial, sans-serif; font-weight: bold;
+    font-size: 0.9rem; color: #000;
+    text-align: center; text-transform: uppercase;
+    min-height: 1.2em;
+}
+
+.level-container { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.level-container label, .stat-label { font-size: 0.8rem; font-weight: bold; color: #222; }
+.xp-bar {
+    background: rgba(255,255,255,0.4);
+    border-radius: 20px; height: 8px; overflow: hidden;
+}
+.xp-progress { background: #8fae6b; height: 100%; border-radius: 20px; transition: width 0.5s ease; }
+.stat-row { display: flex; justify-content: space-between; padding: 0 2px; }
+.stat-box { display: flex; flex-direction: column; }
+.stat-value { font-size: 1rem; color: #000; font-weight: 900; }
+
+/* Enemy stats */
+.enemy-stats { display: flex; flex-direction: column; gap: 6px; }
+.enemy-stat-row { display: flex; gap: 8px; align-items: center; }
+
+/* Level badge on pet card */
+.level-badge {
+    position: absolute;
+    bottom: -16px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: white;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1rem; letter-spacing: 1px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ═══════════════════════
+   START ZONE
+═══════════════════════ */
+.start-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-start-adventure {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 18px 36px;
+    border-radius: 16px;
+    font-family: 'Archive', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    line-height: 1.6;
+}
+.btn-start-adventure small { font-size: 1rem; font-family: 'Nunito', sans-serif; opacity: 0.9; }
+.btn-start-adventure:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+/* ═══════════════════════
+   ATTACK ANIMATIONS
+═══════════════════════ */
+@keyframes shakeLeft {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-12px); }
+    75% { transform: translateX(8px); }
+}
+@keyframes shakeRight {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(12px); }
+    75% { transform: translateX(-8px); }
+}
+@keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-50px); }
+}
+
+/* FADE OUT (Panget kasi pag same enemy tapos di maglalaho) */
+@keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.enemy-fade-out { animation: fadeOut 0.5s ease forwards; }
+.enemy-fade-in  { animation: fadeIn  0.5s ease forwards; }
+
+.shake-left  { animation: shakeLeft  0.4s ease; }
+.shake-right { animation: shakeRight 0.4s ease; }
+
+.dmg-popup {
+    position: fixed;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.3rem;
+    color: #c0392b;
+    pointer-events: none;
+    animation: floatUp 1s ease forwards;
+    z-index: 9999;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ═══════════════════════
+   TUTORIAL MODAL
+═══════════════════════ */
+.modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 500;
+    justify-content: center;
+    align-items: center;
+}
+.modal-overlay.active { display: flex; }
+
+.tutorial-card {
+    background: #f5e6d6;
+    border-radius: 24px;
+    padding: 40px 36px 32px;
+    max-width: 460px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.tutorial-text {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.1rem;
+    color: #2a1a0a;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.btn-tutorial-next {
+    background: var(--brown);
+    color: white;
+    border: none;
+    padding: 12px 36px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-tutorial-next:hover { background: var(--orange-dark); }
+
+/* ═══════════════════════
+   LOSE MODAL
+═══════════════════════ */
+.lose-card {
+    background: #f5e6d6;
+    border-radius: 24px;
+    padding: 40px 36px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lose-title {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 2.5rem;
+    color: var(--orange-dark);
+}
+
+.lose-sub { font-size: 0.9rem; color: #7a5a40; }
+
+.lose-km {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 2rem;
+    color: #2a1a0a;
+}
+
+.lose-highscore { font-size: 0.85rem; color: #7a5a40; margin-bottom: 8px; }
+
+.btn-try-again {
+    background: var(--orange);
+    color: white; border: none;
+    padding: 14px; border-radius: 30px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.95rem; cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-try-again:hover { background: var(--orange-dark); }
+
+.btn-quit {
+    background: var(--orange-dark);
+    color: white; border: none;
+    padding: 14px; border-radius: 30px;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.95rem; cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-quit:hover { background: var(--brown); }
