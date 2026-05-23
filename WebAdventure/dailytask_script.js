@@ -11,7 +11,7 @@ const btnEnergyCancel  = document.getElementById('btnEnergyCancel');
 // 1. AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
-if (!currentUser) window.location.href = '/WebIndex/index.html';
+if (!currentUser) window.location.href = '../WebIndex/index.html';
 
 // ═══════════════════════════════════════
 // 2. GAME CONSTANTS
@@ -253,7 +253,7 @@ const btnLogout = document.getElementById('btnLogout');
 if (btnLogout) {
     btnLogout.addEventListener('click', () => {
         localStorage.removeItem('loggedInUser');
-        window.location.href = '/WebIndex/index.html';
+        window.location.href = '../WebIndex/index.html';
     });
 }
 
