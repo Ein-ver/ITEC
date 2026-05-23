@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. Intercept the normal click action and reroute them instantly to game.html
         navAuthBtn.addEventListener('click', (event) => {
             event.stopPropagation(); // Stops the default login modal script from firing
-            window.location.href = '/WebAdventure/dailytask.html'; // Adjust path if it lives in a subfolder like /WebAdventure/game.html
+            window.location.href = '../WebAdventure/dailytask.html'; // Adjust path if it lives in a subfolder like /WebAdventure/game.html
         });
     } else {
         // If NO one is logged in, wire it up to open the native login popup modal normally
@@ -53,10 +53,10 @@ if (backTopLogo) {
 
 // 4. --- CARD SWITCHER LOGIC ---
 const petData = [
-    { name: "NEMU", title: "JUSTICEMAXXING", level: "75%", pawer: "70 PAWS", energy: "100%", img: "/Assets/gomcat.webp" },
-    { name: "LUNA", title: "THE SWIFT SCOUT", level: "40%", pawer: "35 PAWS", energy: "80%", img: "/Assets/Elgato.webp" },
-    { name: "COCO", title: "GENTLE GIANT", level: "95%", pawer: "15 PAWS", energy: "50%", img: "/Assets/grrr.webp" },
-    { name: "SHONGET", title: "LOREM IPSUM DOLOR", level: "15%", pawer: "10 PAWS", energy: "10%", img: "/Assets/wilsonlosiento.webp" }
+    { name: "NEMU", title: "JUSTICEMAXXING", level: "75%", pawer: "70 PAWS", energy: "100%", img: "../Assets/gomcat.webp" },
+    { name: "LUNA", title: "THE SWIFT SCOUT", level: "40%", pawer: "35 PAWS", energy: "80%", img: "../Assets/Elgato.webp" },
+    { name: "COCO", title: "GENTLE GIANT", level: "95%", pawer: "15 PAWS", energy: "50%", img: "../Assets/grrr.webp" },
+    { name: "SHONGET", title: "LOREM IPSUM DOLOR", level: "15%", pawer: "10 PAWS", energy: "10%", img: "../Assets/wilsonlosiento.webp" }
 ];
 
 let currentPetIndex = 0;
@@ -142,7 +142,7 @@ if (btnLoginNav) {
     btnLoginNav.addEventListener('click', (e) => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
-            window.location.href = '/WebAdventure/dailytask.html';
+            window.location.href = '../WebAdventure/dailytask.html';
         } else {
             openModal('login');
         }
@@ -154,7 +154,7 @@ if (btnJourney) {
     btnJourney.addEventListener('click', (e) => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
-            window.location.href = '/WebAdventure/dailytask.html';
+            window.location.href = '../WebAdventure/dailytask.html';
         } else {
             openModal('register'); // Directly flags registration without triggering login view
         }
@@ -284,7 +284,7 @@ if (registerForm) {
         closeModal();
 
         // Reroute them straight to the profile setup configuration dashboard
-        window.location.href = '/WebSettings/setting.html'; 
+        window.location.href = '../WebSettings/setting.html'; 
     });
 }
 
@@ -341,6 +341,6 @@ if (loginForm) {
         loginForm.reset();
         closeModal();
         
-        window.location.href = '/WebAdventure/dailytask.html';
+        window.location.href = '../WebAdventure/dailytask.html';
     });
 }

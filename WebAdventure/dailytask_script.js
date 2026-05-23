@@ -1,3 +1,12 @@
+// GLOBAL
+// ----------------------
+let pendingEnergyCallback = null;
+const energyModal      = document.getElementById('energyWarningModal');
+const btnEnergyConfirm = document.getElementById('btnEnergyConfirm');
+const btnEnergyCancel  = document.getElementById('btnEnergyCancel');
+
+//
+
 // ═══════════════════════════════════════
 // 1. AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
@@ -7,10 +16,10 @@ if (!currentUser) window.location.href = '/WebIndex/index.html';
 // ═══════════════════════════════════════
 // 2. GAME CONSTANTS
 // ═══════════════════════════════════════
-const XP_PER_LEVEL  = 200;
-const GROUP_ENERGY  = { morning: 20, bonding: 40, care: 10 };
+const XP_PER_LEVEL = 200;
+const GROUP_ENERGY = { morning: 20, bonding: 40, care: 10 };
 const PAWR_PER_LEVEL = 2;  // PAW-ER increases by 2 per level
-const TOTAL_TASKS   = 7;   // total checkboxes on the page — update if you add/remove tasks
+const TOTAL_TASKS = 7;   // total checkboxes on the page — update if you add/remove tasks
 
 // ═══════════════════════════════════════
 // 3. LOAD / INIT GAME STATE
@@ -21,7 +30,7 @@ function getTodayKey() {
 
 function loadGameState() {
     const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
-    const index    = accounts.findIndex(acc => acc.email === currentUser.email);
+    const index = accounts.findIndex(acc => acc.email === currentUser.email);
     if (index === -1) return null;
 
     const acc = accounts[index];
@@ -51,7 +60,7 @@ function loadGameState() {
 
         // FIX: streak counts how many tasks were checked, not if ALL were true
         const checkedCount = Object.keys(acc.game.checkedTasks).length;
-        const totalTasks   = document.querySelectorAll('.task-item input[type="checkbox"]').length;
+        const totalTasks = document.querySelectorAll('.task-item input[type="checkbox"]').length;
 
         if (acc.game.lastDate === yKey && checkedCount >= totalTasks) {
             acc.game.streak += 1;   // completed all tasks yesterday
@@ -64,7 +73,7 @@ function loadGameState() {
         save(accounts, index, acc);
     }
 
-    
+
 
     return { acc, accounts, index };
 }
@@ -82,34 +91,34 @@ function save(accounts, index, acc) {
 // 5. POPULATE PET CARD
 // ═══════════════════════════════════════
 function populatePetCard(acc) {
-    const nameEl   = document.getElementById('gameCardName');
-    const titleEl  = document.getElementById('gameCardTitle');
-    const imgEl    = document.getElementById('gamePetImg');
-    const phEl     = document.getElementById('gamePetPlaceholder');
-    const pawerEl  = document.getElementById('gameCardPawer');
+    const nameEl = document.getElementById('gameCardName');
+    const titleEl = document.getElementById('gameCardTitle');
+    const imgEl = document.getElementById('gamePetImg');
+    const phEl = document.getElementById('gamePetPlaceholder');
+    const pawerEl = document.getElementById('gameCardPawer');
     const energyEl = document.getElementById('gameCardEnergy');
-    const xpBarEl  = document.getElementById('xpBar');
-    const levelEl  = document.getElementById('levelBadge');
+    const xpBarEl = document.getElementById('xpBar');
+    const levelEl = document.getElementById('levelBadge');
     const streakEl = document.getElementById('streakCount');
 
-    if (nameEl)   nameEl.textContent  = acc.petName  || 'PET NAME';
-    if (titleEl)  titleEl.textContent = acc.petTitle || 'YOUR PET TITLE';
+    if (nameEl) nameEl.textContent = acc.petName || 'PET NAME';
+    if (titleEl) titleEl.textContent = acc.petTitle || 'YOUR PET TITLE';
 
     if (acc.petPhoto && imgEl && phEl) {
         imgEl.src = acc.petPhoto;
         imgEl.style.display = 'block';
-        phEl.style.display  = 'none';
+        phEl.style.display = 'none';
     }
 
-    const game       = acc.game;
+    const game = acc.game;
     const xpIntoLevel = game.xp % XP_PER_LEVEL;
-    const xpPercent  = Math.min((xpIntoLevel / XP_PER_LEVEL) * 100, 100);
+    const xpPercent = Math.min((xpIntoLevel / XP_PER_LEVEL) * 100, 100);
 
-    if (xpBarEl)  xpBarEl.style.width   = xpPercent + '%';
-    if (levelEl)  levelEl.textContent   = `LVL ${game.level}:`;
-    if (pawerEl)  pawerEl.textContent   = `${game.pawer} PAWS`;  // PAW-ER, not XP
-    if (energyEl) energyEl.textContent  = `${game.energy}%`;
-    if (streakEl) streakEl.textContent  = game.streak;
+    if (xpBarEl) xpBarEl.style.width = xpPercent + '%';
+    if (levelEl) levelEl.textContent = `LVL ${game.level}:`;
+    if (pawerEl) pawerEl.textContent = `${game.pawer} PAWS`;  // PAW-ER, not XP
+    if (energyEl) energyEl.textContent = `${game.energy}%`;
+    if (streakEl) streakEl.textContent = game.streak;
 }
 
 // ═══════════════════════════════════════
@@ -120,7 +129,7 @@ function restoreCheckboxes(checkedTasks) {
     checkboxes.forEach((cb, i) => {
         const key = `task_${i}`;
         if (checkedTasks[key]) {
-            cb.checked  = true;
+            cb.checked = true;
             disableTaskItem(cb); // already checked today — lock it
         }
     });
@@ -139,30 +148,48 @@ function disableTaskItem(cb) {
 function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
     if (!cb.checked) return; // only fires on check, not uncheck (disabled anyway)
 
-    const exp        = parseInt(cb.dataset.exp) || 0;
-    const group      = cb.dataset.group;
-    const key        = `task_${taskIndex}`;
-    const streak     = acc.game.streak || 0;
+    const exp = parseInt(cb.dataset.exp) || 0;
+    const group = cb.dataset.group;
+    const key = `task_${taskIndex}`;
+    const streak = acc.game.streak || 0;
     const multiplier = 1 + (streak * 0.1);
-    const gained     = Math.round(exp * multiplier);
+    const gained = Math.round(exp * multiplier);
 
     // Award XP
     acc.game.xp += gained;
     acc.game.checkedTasks[key] = true;
 
     // Check group completion → award energy
-    const groupBoxes   = document.querySelectorAll(`.task-item input[data-group="${group}"]`);
+    const groupBoxes = document.querySelectorAll(`.task-item input[data-group="${group}"]`);
     const allGroupDone = [...groupBoxes].every(c => c.checked);
     if (allGroupDone) {
-        acc.game.energy = Math.min(100, acc.game.energy + (GROUP_ENERGY[group] || 0));
+        if (acc.game.energy >= MAX_ENERGY) {
+            // Energy is full — warn the user but still give XP
+            const proceed = confirm('Warning: Energy from this quest won\'t be added (max energy reached). Do you still want to complete (would only get EXP)?');
+            if (!proceed) {
+                // Undo the checkbox
+                cb.checked = false;
+                cb.disabled = false;
+                const label = cb.closest('.task-item');
+                if (label) label.style.pointerEvents = '';
+                acc.game.xp = Math.max(0, acc.game.xp - gained);
+                delete acc.game.checkedTasks[key];
+                save(accounts, accIndex, acc);
+                populatePetCard(acc);
+                return;
+            }
+            // User chose to continue — skip energy award but keep XP
+        } else {
+            acc.game.energy = Math.min(MAX_ENERGY, acc.game.energy + (GROUP_ENERGY[group] || 0));
+        }
     }
 
     // Level up check
     const newLevel = Math.floor(acc.game.xp / XP_PER_LEVEL) + 1;
     if (newLevel > acc.game.level) {
-        const levelsGained  = newLevel - acc.game.level;
-        acc.game.level      = newLevel;
-        acc.game.pawer     += levelsGained * PAWR_PER_LEVEL; // +2 PAW-ER per level
+        const levelsGained = newLevel - acc.game.level;
+        acc.game.level = newLevel;
+        acc.game.pawer += levelsGained * PAWR_PER_LEVEL; // +2 PAW-ER per level
         showLevelUpPopup(newLevel);
     }
 
@@ -181,12 +208,12 @@ function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
 // 8. POPUPS
 // ═══════════════════════════════════════
 function showExpPopup(element, text) {
-    const rect  = element.closest('.task-item').getBoundingClientRect();
+    const rect = element.closest('.task-item').getBoundingClientRect();
     const popup = document.createElement('div');
     popup.classList.add('exp-popup');
     popup.textContent = text;
-    popup.style.left  = (rect.right + 10) + 'px';
-    popup.style.top   = (rect.top + window.scrollY) + 'px';
+    popup.style.left = (rect.right + 10) + 'px';
+    popup.style.top = (rect.top + window.scrollY) + 'px';
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1200);
 }

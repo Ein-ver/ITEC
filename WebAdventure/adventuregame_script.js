@@ -2,7 +2,7 @@
 // 1. AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
-if (!currentUser) window.location.href = '/WebIndex/index.html';
+if (!currentUser) window.location.href = '../WebIndex/index.html';
 
 const XP_PER_LEVEL   = 200;
 const KM_PER_ENEMY   = 0.1;   // each enemy defeated = +0.1 KM (0.5 too muc mr.greedy)
@@ -27,12 +27,12 @@ let accIndex     = -1;
 // Enemy pool — add pa kayo dito
 // All starts at 2 health para mas madali mapatay
 const ENEMY_POOL = [
-    { name: "WILD CATTO",       title: "WANDERER",          baseHealth: 2, coinDrop: 2, img: "/Assets/Cat_Enemy.jpg"},
-    { name: "WILD RABBIT",      title: "SPEEDSTER",         baseHealth: 2, coinDrop: 3, img: "/Assets/Rabbit_Enemy.jpeg"},
-    { name: "GRUMPY UNC DOG",   title: "BARKER",            baseHealth: 2, coinDrop: 3, img: "/Assets/Dog_Enemy.jpg"},
-    { name: "RACCOON..?",       title: "STELLE",            baseHealth: 2, coinDrop: 3, img: "/Assets/Raccoon_Enemy.jpg"},
-    { name: "ANGY GOOSE",       title: "UNTAMED BUT CUTE",  baseHealth: 2, coinDrop: 4, img: "/Assets/Goose_Enemy.jpg"},
-    { name: "BEAR CUB?",        title: "HAR HAR HAR",       baseHealth: 2, coinDrop: 5, img: "/Assets/Bear_Enemy.gif"},
+    { name: "WILD CATTO",       title: "WANDERER",          baseHealth: 2, coinDrop: 2, img: "../Assets/Cat_Enemy.jpg"},
+    { name: "WILD RABBIT",      title: "SPEEDSTER",         baseHealth: 2, coinDrop: 3, img: "../Assets/Rabbit_Enemy.jpeg"},
+    { name: "GRUMPY UNC DOG",   title: "BARKER",            baseHealth: 2, coinDrop: 3, img: "../Assets/Dog_Enemy.jpg"},
+    { name: "RACCOON..?",       title: "STELLE",            baseHealth: 2, coinDrop: 3, img: "../Assets/Raccoon_Enemy.jpg"},
+    { name: "ANGY GOOSE",       title: "UNTAMED BUT CUTE",  baseHealth: 2, coinDrop: 4, img: "../Assets/Goose_Enemy.jpg"},
+    { name: "BEAR CUB?",        title: "HAR HAR HAR",       baseHealth: 2, coinDrop: 5, img: "../Assets/Bear_Enemy.gif"},
 ];
 
 // ═══════════════════════════════════════
@@ -339,6 +339,6 @@ if (loadAccount()) {
         gameRunning = false;
         clearInterval(attackTimer);
         localStorage.removeItem('loggedInUser');
-        window.location.href = '/WebIndex/index.html';
+        window.location.href = '../WebIndex/index.html';
     });
 }

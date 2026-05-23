@@ -5,7 +5,7 @@ const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
 // If no one is logged in, redirect back to home
 if (!currentUser) {
-    window.location.href = '/WebIndex/index.html';
+    window.location.href = '../WebIndex/index.html';
 }
 
 // Pre-fill email (read-only) and username if already set
@@ -217,6 +217,6 @@ const btnLogout = document.getElementById('btnLogout');
 if (btnLogout) {
     btnLogout.addEventListener('click', () => {
         localStorage.removeItem('loggedInUser');
-        window.location.href = '/WebIndex/index.html';
+        window.location.href = '../WebIndex/index.html';
     });
 }

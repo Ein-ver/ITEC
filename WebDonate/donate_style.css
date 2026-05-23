@@ -3,7 +3,7 @@
 /* === FONTS === */
 @font-face {
     font-family: 'Nunito';
-    src: url(/Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
     font-family: 'Nunito';
-    src: url(/Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
     font-family: 'Gagalin';
-    src: url(/Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -27,7 +27,7 @@
 
 @font-face {
     font-family: 'ArchivoBlack';
-    src: url(/Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -35,7 +35,7 @@
 
 @font-face {
     font-family: 'Archive';
-    src: url(/Fonts/archive/Archive.otf) format('opentype');
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -43,7 +43,7 @@
 
 @font-face {
     font-family: 'EtnaSerif';
-    src: url(/Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -51,7 +51,7 @@
 
 @font-face {
     font-family: 'OpenSauce';
-    src: url(/Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -59,7 +59,7 @@
 
 @font-face {
     font-family: 'OpenSauceB';
-    src: url(/Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -67,7 +67,7 @@
 
 @font-face {
     font-family: 'Biski';
-    src: url(/Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -75,7 +75,7 @@
 
 @font-face {
     font-family: 'DMSans';
-    src: url(/Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -83,7 +83,7 @@
 
 @font-face {
     font-family: 'CopperGoth';
-    src: url(/Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -91,7 +91,7 @@
 
 @font-face {
     font-family: 'CopperGothL';
-    src: url(/Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
