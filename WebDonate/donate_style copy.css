@@ -97,136 +97,89 @@
     font-display: swap;
 }
 
-/* VARIABLE */
-:root {
-    --orange:       #d97b4f;
-    --beige:        #f0e0d0;
-    --text-dark:   #3b1f0e;
-    --nav-h:        64px;
-}
-
 body {
-    font-family: 'Nunito', sans-serif;
-    padding-top: var(--nav-h);
-    background: var(--beige);
-    color: var(--text-dark);
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f9f5f0;
+    margin: 0;
+    padding-top: 90px;
 }
 
-/* ═══════════════════════
-   NAVBAR
-═══════════════════════ */
-.profile-nav {
+nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    height: var(--nav-h);
-    background: var(--orange);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
-    padding: 0 32px;
-    gap: 32px;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    justify-content: flex-start;
+    padding: 18px 40px;
+    background: rgba(65, 38, 17, 0.85);
+    backdrop-filter: blur(8px);
 }
- 
+
 .logo img {
     height: 70px;
     width: auto;
-    filter: brightness(0) invert(1);
+    margin-right: 40px;
 }
- 
+
 .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
- 
+
 .nav-links a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-family: 'EtnaSerif', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     transition: opacity 0.2s;
 }
 
-.nav-links a:hover { opacity: 0.75; }
+.nav-links a:hover {
+    opacity: 0.7;
+}
 
-
-/* DONATION STUFF */
 .donation-section {
     max-width: 600px;
-    margin: 40px auto;
+    margin: 30px auto;
     background: #fff;
-    padding: 32px;
+    padding: 20px;
     border-radius: 8px;
 }
 
 h2 {
-    text-align: center;
-    font-family: 'EtnaSerif', sans-serif;
-    color: var(--brown);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-p { 
-    text-align: center;
-    margin-top: 20px;
+    color: #6b4f3b;
 }
 
 label {
     display: block;
-    margin-top: 14px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-
+    margin-top: 10px;
 }
 
 input,
 select,
 button {
     width: 100%;
-    padding: 12px 18px;
-    margin-top: 6px;
-    border: .5px solid;
-    background: #fff9f6;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.92rem;
-    color: var(--text-dark);
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
 }
 
-input:focus,
-select:focus {
-    border-color: var(--orange);
-    background: #f5ddd0;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    margin-top: 30px;
-    background: var(--orange);
+button {
+    background: #6b4f3b;
     color: white;
     border: none;
-    border-radius: 30px;
-    font-family: 'Archive', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 1px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
-button[type="submit"]:hover {
+button:hover {
     background: #8c6b52;
-    transform: translateY(-1px);
 }
 
 footer {
@@ -238,28 +191,21 @@ footer {
 
 .qr {
     text-align: center;
-    margin-top: 40px;
-}
-
-.qr h3 {
-    color: var(--brown);
-    margin-bottom: 5px;
+    margin-top: 20px;
 }
 
 .qr img {
-    width: 400px;
-    margin-top: 12px;
-    border-radius: 12px;
+    width: 250px;
 }
 
 .thankyou {
     display: none;
     text-align: center;
-    padding: 24px;
+    padding: 20px;
     background: #e6ffe6;
-    border: 2px solid #7a3b1e;
-    border-radius: 16px;
-    margin-top: 24px;
+    border: 2px solid #6b4f3b;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
 .paw {
@@ -268,6 +214,11 @@ footer {
 }
 
 @keyframes bounce {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-10px); }
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
 }

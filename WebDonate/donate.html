@@ -2,73 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Donation!</title>
-  <link rel="stylesheet" href="donate_style.css">
-  <script src="donate_script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woo Donation!</title>
+    <link rel="shortcut icon" href="/Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="donate_style.css">
+    <script src="donate_script.js" defer></script>
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">
-      <img src="\Assets\Home_HeaderLogoSMALL.png" alt="PETmalu">
-    </a>
-    <ul class="nav-links">
-      <li><a href="coupaws.html">Coupaws</a></li>
-      <li><a href="donate.html">Donate</a></li>
-      <li><a href="support.html">Support</a></li>
-    </ul>
-  </nav>
+    <nav class="profile-nav">
+        <a href="/WebIndex/index.html" class="logo">
+            <img src="/Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/WebCoupons/coupons.html">Coupaws</a></li>
+            <li><a href="donate.html">Donate</a></li>
+        </ul>
+    </nav>
 
-  <section class="donation-section">
-    <h2>Make a Donation</h2>
-    <p>-THIS WILL HELP OUR COMMUNITY TO GROW AND HELP PETS IN NEED-</p>
-    <form id="donationForm" action="https://www.paypal.com/donate" method="post" target="_blank">
-      <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com">
-      <input type="hidden" name="currency_code" value="PHP">
-      <input type="hidden" name="item_name" value="PETmalu Donation">
-      <input type="hidden" name="amount" value="">
+    <section class="donation-section">
+        <h2>Make a Donation</h2>
+        <p>THIS WILL HELP OUR COMMUNITY TO GROW AND HELP PETS IN NEED!!</p>
 
-      <label for="name">Your Name</label>
-      <input type="text" id="name" placeholder="Enter your name" required>
+        <form id="donationForm" action="https://www.paypal.com/donate" method="post" target="_blank">
+            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com">
+            <input type="hidden" name="currency_code" value="PHP">
+            <input type="hidden" name="item_name" value="PETmalu Donation">
+            <input type="hidden" name="amount" value="">
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
 
-      <label for="amountInput">Donation Amount (₱)</label>
-      <input type="number" id="amountInput" min="50" placeholder="e.g. 500" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
 
-      <label for="purpose">Purpose</label>
-      <select id="purpose">
-        <option value="pets">Pets Support</option>
-        <option value="community">Community Support</option>
-        <option value="general">General Donation</option>
-      </select>
+            <label for="amountInput">Donation Amount (₱)</label>
+            <input type="number" id="amountInput" min="50" placeholder="e.g. 500 PHP" required>
 
-      <button type="submit">Donate with PayPal</button>
-    </form>
+            <label for="purpose">Purpose</label>
+            <select id="purpose">
+                <option value="pets">Pets Support</option>
+                <option value="community">Community Support</option>
+                <option value="general">General Donation</option>
+            </select>
 
-    <div class="thankyou" id="thankyouMessage">
-      <h3>🎉 Thank You!</h3>
-      <p>Your donation is being processed. You’ll be redirected to PayPal in a moment.</p>
-      <div class="paw">🐾</div>
-    </div>
+            <button type="submit">Donate with PayPal</button>
+        </form>
 
-    <div class="qr">
-      <h3>Or Donate via GCash</h3>
-      <p>Scan the QR code below to send your donation:</p>
-      <img src="c:\Users\marianne\Downloads\ITEC-main\ITEC-main\Index\qr.jpg" alt="GCash QR Code">
-    </div>
-  </section>
+        <div class="thankyou" id="thankyouMessage">
+            <h3>🎉 Thank You!</h3>
+            <p>Your donation is being processed. You'll be redirected to PayPal in a moment.</p>
+            <div class="paw">🐾</div>
+        </div>
 
-  <footer>
-    <p>❤️ Every donation helps pets live better lives. Thank you!</p>
-  </footer>
+        <div class="qr">
+            <h3>Or Donate via GCash</h3>
+            <p>Scan the QR code below to send your donation:</p>
+            <img src="/Assets/QRCode_GCASH.webp" alt="GCash QR Code"> <!-- GCASH PICTURE HERE SOON -->
+        </div>
+    </section>
 
-  <script>
-    
-  </script>
+    <footer>
+        <p>❤️ Every donation helps pets live better lives. Thank you!</p>
+    </footer>
+
 </body>
-
 </html>

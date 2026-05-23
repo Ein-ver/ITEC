@@ -1,3 +1,32 @@
+// ═══════════════════════════════════════
+// AUTHENTICATION VISIBILITY UTILITY
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+    const navAuthBtn = document.getElementById('navAuthBtn');
+    
+    // Check if a valid session profile exists in the browser's storage cache
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser && navAuthBtn) {
+        // 1. Swap the display label text cleanly to match your RPG theme
+        navAuthBtn.textContent = "Play";
+        
+        // 2. Change its visual styling or add an optional unique class if needed
+        navAuthBtn.classList.add('authenticated-play');
+
+        // 3. Intercept the normal click action and reroute them instantly to game.html
+        navAuthBtn.addEventListener('click', (event) => {
+            event.stopPropagation(); // Stops the default login modal script from firing
+            window.location.href = '/WebAdventure/dailytask.html'; // Adjust path if it lives in a subfolder like /WebAdventure/game.html
+        });
+    } else {
+        // If NO one is logged in, wire it up to open the native login popup modal normally
+        if (navAuthBtn) {
+            navAuthBtn.addEventListener('click', openModal);
+        }
+    }
+});
+
 // 1. Mobile Menu Toggle Logic
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
@@ -62,222 +91,208 @@ function rotatePetCard() {
 
 setInterval(rotatePetCard, 4000);
 
-// 5. --- MODAL OPEN/CLOSE ---
+// ═══════════════════════════════════════
+// 5. MODAL DISPLAY OPEN/CLOSE UTILITIES
+// ═══════════════════════════════════════
 const authModal = document.getElementById('authModal');
-const btnLoginNav = document.querySelector('.btn-login');
-const btnJourney = document.querySelector('.btn-journey');
+const btnLoginNav = document.querySelector('.btn-login'); // Nav bar button
+const btnJourney = document.querySelector('.btn-journey'); // Main CTA button
 const closeModalBtn = document.getElementById('closeModalBtn');
+
 const loginView = document.getElementById('loginView');
 const registerView = document.getElementById('registerView');
 const switchToRegister = document.getElementById('switchToRegister');
 const switchToLogin = document.getElementById('switchToLogin');
 
-function openModal() {
+// Open Utility: Accepts a dynamic starting view string ('login' or 'register')
+function openModal(defaultView = 'login') {
+    if (!authModal) return;
+    
     authModal.classList.add('active');
-    showLoginView();
-    clearErrors(); // clear any leftover errors when reopening
+    
+    if (defaultView === 'register') {
+        showRegisterView();
+    } else {
+        showLoginView();
+    }
 }
 
 function closeModal() {
-    authModal.classList.remove('active');
-    clearErrors();
+    if (authModal) authModal.classList.remove('active');
 }
 
 function showRegisterView(e) {
     if (e) e.preventDefault();
-    loginView.classList.add('hidden');
-    registerView.classList.remove('hidden');
-    clearErrors();
+    if (loginView && registerView) {
+        loginView.classList.add('hidden');
+        registerView.classList.remove('hidden');
+    }
 }
 
 function showLoginView(e) {
     if (e) e.preventDefault();
-    registerView.classList.add('hidden');
-    loginView.classList.remove('hidden');
-    clearErrors();
+    if (loginView && registerView) {
+        registerView.classList.add('hidden');
+        loginView.classList.remove('hidden');
+    }
 }
 
-if (btnLoginNav) btnLoginNav.addEventListener('click', openModal);
-if (btnJourney) btnJourney.addEventListener('click', openModal);
+// FIXED: Consolidated Nav Bar Log In / Play Listener
+if (btnLoginNav) {
+    btnLoginNav.addEventListener('click', (e) => {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+            window.location.href = '/WebAdventure/dailytask.html';
+        } else {
+            openModal('login');
+        }
+    });
+}
+
+// FIXED: Consolidated "Start the Journey" Listener (Prevents the split-second pop-up flicker)
+if (btnJourney) {
+    btnJourney.addEventListener('click', (e) => {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+            window.location.href = '/WebAdventure/dailytask.html';
+        } else {
+            openModal('register'); // Directly flags registration without triggering login view
+        }
+    });
+}
+
+// Close Triggers
 if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+// Toggle UI Switch Links
 if (switchToRegister) switchToRegister.addEventListener('click', showRegisterView);
 if (switchToLogin) switchToLogin.addEventListener('click', showLoginView);
 
+// Dismiss modal if mask backdrop area clicked directly
 window.addEventListener('click', (e) => {
     if (e.target === authModal) closeModal();
 });
 
-// 6. --- INLINE ERROR HELPERS ---
 
-// Shows a red error message below an input and turns the border red
-function showError(inputEl, message) {
-    inputEl.classList.add('input-error');
-
-    // Check if an error message already exists below this input
-    let errMsg = inputEl.parentElement.querySelector('.error-msg');
-    if (!errMsg) {
-        errMsg = document.createElement('span');
-        errMsg.classList.add('error-msg');
-        inputEl.parentElement.appendChild(errMsg);
-    }
-    errMsg.textContent = message;
-}
-
-// Clears error state from one input
-function clearError(inputEl) {
-    inputEl.classList.remove('input-error');
-    const errMsg = inputEl.parentElement.querySelector('.error-msg');
-    if (errMsg) errMsg.textContent = '';
-}
-
-// Clears ALL errors in the modal
-function clearErrors() {
-    document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
-    document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-    document.querySelectorAll('.form-error').forEach(el => el.textContent = '');
-}
-
-// Clear error on input when user starts typing again
-document.querySelectorAll('.input-group input').forEach(input => {
-    input.addEventListener('input', () => clearError(input));
-});
-
-// 7. --- REGISTER LOGIC ---
+// ═══════════════════════════════════════
+// 6. FORM VALIDATION & AUTHENTICATION LOGIC
+// ═══════════════════════════════════════
 const registerForm = document.getElementById('registerForm');
-
-if (registerForm) {
-    registerForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        clearErrors();
-
-        const usernameInput = document.getElementById('regUser');
-        const passwordInput = document.getElementById('regPass');
-        const confirmInput = document.getElementById('regConfirm');
-        const agreeTerms = document.getElementById('agreeTerms');
-        const formError = document.getElementById('registerFormError');
-
-        let hasError = false;
-
-        // Validate username
-        if (usernameInput.value.trim() === '') {
-            showError(usernameInput, 'Username or email is required.');
-            hasError = true;
-        }
-
-        // Validate password length
-        if (passwordInput.value.length < 6) {
-            showError(passwordInput, 'Password must be at least 6 characters.');
-            hasError = true;
-        }
-
-        // Validate confirm password matches
-        if (confirmInput.value !== passwordInput.value) {
-            showError(confirmInput, 'Passwords do not match.');
-            hasError = true;
-        }
-
-        // Validate terms checkbox
-        if (!agreeTerms.checked) {
-            if (formError) formError.textContent = 'You must agree to the Terms of Service.';
-            hasError = true;
-        }
-
-        if (hasError) return;
-
-        // Save to localStorage
-        const userAccountData = {
-            username: usernameInput.value.trim(),
-            password: passwordInput.value
-        };
-        localStorage.setItem('registeredUser', JSON.stringify(userAccountData));
-
-        registerForm.reset();
-        showLoginView();
-
-        // Show success message on login view
-        const loginFormError = document.getElementById('loginFormError');
-        if (loginFormError) {
-            loginFormError.style.color = '#4a7c4e';
-            loginFormError.textContent = '✔ Account created! You can now log in.';
-        }
-    });
-}
-
-// 8. --- LOGIN LOGIC ---
 const loginForm = document.getElementById('loginForm');
 
-// REGISTER
+// Error Display helper functions
+function showError(inputElement, errorMessage) {
+    const group = inputElement.closest('.input-group');
+    if (!group) return;
+    let errorSpan = group.querySelector('.error-msg');
+    if (!errorSpan) {
+        errorSpan = document.createElement('span');
+        errorSpan.className = 'error-msg';
+        errorSpan.style.color = '#c0392b';
+        errorSpan.style.fontSize = '0.8rem';
+        errorSpan.style.marginTop = '4px';
+        group.appendChild(errorSpan);
+    }
+    errorSpan.textContent = errorMessage;
+    if (errorMessage) {
+        inputElement.classList.add('input-error');
+    } else {
+        inputElement.classList.remove('input-error');
+    }
+}
+
+function clearAllErrors() {
+    document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+    document.querySelectorAll('input').forEach(el => el.classList.remove('input-error'));
+    const loginError = document.getElementById('loginFormError');
+    const registerError = document.getElementById('registerFormError');
+    if (loginError) loginError.textContent = '';
+    if (registerError) registerError.textContent = '';
+}
+
+// --- REGISTER FORM SUBMISSION HANDLER ---
 if (registerForm) {
     registerForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        clearErrors();
+        clearAllErrors();
 
         const emailInput = document.getElementById('regEmail');
-        const passwordInput = document.getElementById('regPass');
+        const passInput = document.getElementById('regPass');
         const confirmInput = document.getElementById('regConfirm');
         const agreeTerms = document.getElementById('agreeTerms');
         const formError = document.getElementById('registerFormError');
 
         let hasError = false;
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailInput.value.trim())) {
-            showError(emailInput, 'Please enter a valid email address.');
+        if (!emailInput.value.trim()) {
+            showError(emailInput, 'Email is required.');
             hasError = true;
         }
-
-        if (passwordInput.value.length < 6) {
-            showError(passwordInput, 'Password must be at least 6 characters.');
+        if (!passInput.value) {
+            showError(passInput, 'Password is required.');
+            hasError = true;
+        } else if (passInput.value.length < 6) {
+            showError(passInput, 'Password must be at least 6 characters.');
             hasError = true;
         }
-
-        if (confirmInput.value !== passwordInput.value) {
+        if (confirmInput.value !== passInput.value) {
             showError(confirmInput, 'Passwords do not match.');
             hasError = true;
         }
-
-        if (!agreeTerms.checked) {
-            if (formError) formError.textContent = 'You must agree to the Terms of Service.';
+        if (agreeTerms && !agreeTerms.checked) {
+            if (formError) {
+                formError.style.color = '#c0392b';
+                formError.textContent = 'You must agree to the Terms of Service.';
+            }
             hasError = true;
         }
 
         if (hasError) return;
 
-        // Load existing accounts array (or start fresh)
+        // Fetch local database accounts array
         const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
 
-        // Check if email already exists
+        // Check if email already registered
         const emailExists = accounts.some(acc => acc.email === emailInput.value.trim());
         if (emailExists) {
-            showError(emailInput, 'This email is already registered.');
+            showError(emailInput, 'Email is already registered!');
             return;
         }
 
-        // Add new account to the array
-        accounts.push({
+        // Generate temporary clean username from email string prefix
+        const generatedUsername = emailInput.value.split('@')[0];
+
+        // Package new account details
+        const newAccount = {
             email: emailInput.value.trim(),
-            password: passwordInput.value,
-            username: ''   // set later on profile page
-        });
+            username: generatedUsername,
+            password: passInput.value,
+            petName: '',
+            petTitle: '',
+            petPhoto: ''
+        };
+
+        // Add to database
+        accounts.push(newAccount);
         localStorage.setItem('petmaluAccounts', JSON.stringify(accounts));
 
-        registerForm.reset();
-        showLoginView();
+        // UPDATED: Set this new account as the active session right away!
+        localStorage.setItem('loggedInUser', JSON.stringify(newAccount));
 
-        const loginFormError = document.getElementById('loginFormError');
-        if (loginFormError) {
-            loginFormError.style.color = '#4a7c4e';
-            loginFormError.textContent = '✔ Account created! You can now log in.';
-        }
+        //alert(`wowzerz`);
+        registerForm.reset();
+        closeModal();
+
+        // Reroute them straight to the profile setup configuration dashboard
+        window.location.href = '/WebSettings/setting.html'; 
     });
 }
 
-// LOGIN
+// --- LOGIN FORM SUBMISSION HANDLER ---
 if (loginForm) {
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        clearErrors();
+        clearAllErrors();
 
         const userInput = document.getElementById('loginUser');
         const passInput = document.getElementById('loginPass');
@@ -286,10 +301,9 @@ if (loginForm) {
         let hasError = false;
 
         if (userInput.value.trim() === '') {
-            showError(userInput, 'Please enter your email.');
+            showError(userInput, 'Please enter your email/username.');
             hasError = true;
         }
-
         if (passInput.value === '') {
             showError(passInput, 'Please enter your password.');
             hasError = true;
@@ -297,10 +311,8 @@ if (loginForm) {
 
         if (hasError) return;
 
-        // Load accounts array
         const accounts = JSON.parse(localStorage.getItem('petmaluAccounts') || '[]');
 
-        // Find matching account
         const matched = accounts.find(acc =>
             acc.email === userInput.value.trim() ||
             acc.username === userInput.value.trim()
@@ -309,14 +321,12 @@ if (loginForm) {
         if (!matched) {
             if (formError) {
                 formError.style.color = '#c0392b';
-                formError.textContent = 'No account found with that email/username!';
+                formError.textContent = 'No account found with that details!';
             }
-            showError(userInput, '');
             return;
         }
 
         if (matched.password !== passInput.value) {
-            showError(passInput, '');
             if (formError) {
                 formError.style.color = '#c0392b';
                 formError.textContent = 'Wrong password/username. Try again!';
@@ -324,9 +334,13 @@ if (loginForm) {
             return;
         }
 
-        // Success — save who is currently logged in
+        // Save active session token data
         localStorage.setItem('loggedInUser', JSON.stringify(matched));
+        
+        //alert(`Yo, ${matched.username || 'Adventurer'}`); <-- For debugging
+        loginForm.reset();
         closeModal();
-        window.location.href = "/WebSettings/setting.html";
+        
+        window.location.href = '/WebAdventure/dailytask.html';
     });
 }
