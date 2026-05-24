@@ -25,7 +25,8 @@ if (!currentUser) window.location.href = '../WebIndex/index.html';
 const XP_PER_LEVEL = 200;
 const GROUP_ENERGY = { morning: 20, bonding: 40, care: 10 };
 const PAWR_PER_LEVEL = 2;  // PAW-ER increases by 2 per level
-const TOTAL_TASKS = 7;   // total checkboxes on the page — update if you add/remove tasks
+const TOTAL_TASKS = 7;   // add kayo kapag nagdagdag tasks dito ah
+const MAX_ENERGY = 200;
 
 // ═══════════════════════════════════════
 // 3. LOAD / INIT GAME STATE
@@ -230,12 +231,12 @@ function showLevelUpPopup(level) {
     popup.style.cssText = `
         position: fixed; top: 40%; left: 50%;
         transform: translateX(-50%);
-        font-size: 2rem; color: #d97b4f;
+        font-size: 2rem; color: #aa532b;
         font-family: 'ArchivoBlack', sans-serif;
         text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         white-space: nowrap;
     `;
-    popup.textContent = `🎉 LEVEL UP! LVL ${level}`;
+    popup.textContent = `LEVELED UP!!`;
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 2000);
 }

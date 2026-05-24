@@ -233,13 +233,13 @@ if (btnLogout) {
 // 8. LOAD OWNED COUPONS IN COUPAWS TAB
 // ═══════════════════════════════════════
 
-// Must match the ALL_COUPONS array in coupons_script.js
+// Coupons nabili sa shop, max 16 letters lang sa coupon
 const ALL_COUPONS = [
-    { id: 'spotify', brand: 'SPOTIFY', offer: '2 months Premium – 60% Discount', tagLabel: 'HOOMAN, LEISURE', cost: 100, code: 'PETMALU-SPT-2024' },
-    { id: 'pedigree', brand: 'PEDIGREE', offer: '40% Discount on Adult: Roasted Chicken Flavor', tagLabel: 'PETS, FOOD', cost: 250, code: 'PETMALU-PDG-40OFF' },
-    { id: 'petstyle', brand: 'PETSTYLE PH', offer: '15% Off Accessories', tagLabel: 'PET, ACCESSORY', cost: 300, code: 'PETMALU-PST-15ACC' },
-    { id: 'whiskers', brand: 'WHISKERS', offer: 'Buy 2 Get 1 Cat Treats', tagLabel: 'PET, FOOD', cost: 300, code: 'PETMALU-WSK-B2G1' },
-    { id: 'vetcare', brand: 'VETCARE CLINIC', offer: 'Free Initial Consultation', tagLabel: 'PET, FOOD', cost: 400, code: 'PETMALU-VTC-FREE1' },
+    { id: 'spotify', brand: 'SPOTIFY', offer: '2 months Premium – 60% Discount', tagLabel: 'HOOMAN, LEISURE', cost: 100, code: 'PETMALU-SPT60JDC' },
+    { id: 'pedigree', brand: 'PEDIGREE', offer: '40% Discount on Adult: Roasted Chicken Flavor', tagLabel: 'PETS, FOOD', cost: 250, code: 'PETMALU-PDG40FOX' },
+    { id: 'petstyle', brand: 'PETSTYLE PH', offer: '15% Off Accessories', tagLabel: 'PET, ACCESSORY', cost: 300, code: 'PETMALU-PST15ACC' },
+    { id: 'whiskers', brand: 'WHISKERS', offer: 'Buy 2 Get 1 Cat Treats', tagLabel: 'PET, FOOD', cost: 300, code: 'PETMALU-WSKB15I' },
+    { id: 'vetcare', brand: 'VETCARE CLINIC', offer: 'Free Initial Consultation', tagLabel: 'PET, FOOD', cost: 400, code: 'PETMALU-VTC1ZJL0' },
 ];
 
 function loadInventory() {
@@ -259,7 +259,7 @@ function loadInventory() {
         return;
     }
 
-    // Build owned coupon list
+    // owned coupon list
     const list = document.createElement('div');
     list.style.cssText = 'display: flex; flex-direction: column; gap: 12px; margin-top: 16px;';
 

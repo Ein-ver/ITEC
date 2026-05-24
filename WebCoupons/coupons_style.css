@@ -161,7 +161,9 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center; /* FIX 1: Centers the text vertically so they aren't floating up! */
     gap: 28px;
+    flex: 1;             /* FIX 2: Forces the container to stretch across the empty space */
 }
 
 .nav-links a {
