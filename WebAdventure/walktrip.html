@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Pet Trail Swipe · Earth Guardian</title>
+    <link rel="stylesheet" href="walktrip_style.css">
+    <script src="walktrip_script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="game-nav">
+        <a href="../WebIndex/index.html" class="nav-logo">
+            <img src="../Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+        <div class="nav-links">
+            <a href="dailytask.html" class="active">GAME</a>
+            <a href="../WebCoupons/coupons.html">COUPAWS</a>
+            <a href="../WebSettings/setting.html" class="btn-profile">PROFILE</a>
+            <button class="btn-logout" id="btnLogout">Log out</button>
+        </div>
+        <button class="hamburger" onclick="toggleWalkMenu()">&#9776;</button>
+    </nav>
+
+    <div class="page-layout">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../WebAdventure/dailytask.html" class="sidebar-btn">DAILY TASKS</a>
+            <a href="../WebAdventure/adventuregame.html" class="sidebar-btn">ADVENTURE</a>
+            <button class="sidebar-btn active">WALK TRIP</button>
+        </aside>
+
+        <!-- GAME CONTENT -->
+        <main class="walk-main">
+
+            <div class="game-container" id="gameContainer">
+                <canvas id="gameCanvas" width="500" height="600"
+                    style="width:100%; height:auto; aspect-ratio:500/600"></canvas>
+                <div class="game-header" id="gameHeader">
+                    <div class="score-timer-box">
+                        <div class="score-text">SCORE: <span id="scoreValue">0</span></div>
+                        <div class="timer-text">TIME: <span id="timerValue">0</span>s</div>
+                    </div>
+                    <div
+                        style="display:flex; flex-direction:column; align-items:flex-end; gap:8px; pointer-events:auto;">
+                        <button class="pause-btn" id="pauseButton">PAUSE</button>
+                        <div class="energy-hud" id="energyHud">
+                            ⚡ <span id="energyHudValue">—</span>%
+                            <div class="energy-hud-bar-wrap">
+                                <div class="energy-hud-bar" id="energyHudBar" style="width:100%; background:#5D9B4A;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START SCREEN -->
+                <div id="startScreen" class="screen">
+                    <div class="title">EVERYTHING IS WALKING DISTANCE</div>
+
+                    <!-- Pet avatar: shows profile photo if available, else animated canvas fallback -->
+                    <img id="startPetAvatar" class="pet-avatar-circle" style="display:none;" alt="Your Pet">
+                    <div id="startPetFallback" class="pet-avatar-fallback">
+                        <canvas id="runningPetCanvas" width="80" height="80"
+                            style="width:80px;height:80px;background:transparent;border-radius:50%;"></canvas>
+                    </div>
+
+                    <button id="playBtnMain">START JOURNEY</button>
+                    <button id="howToBtn">WISDOM (HOW TO)</button>
+                    <button id="settingsBtn">SPIRIT SETTINGS</button>
+                    <div class="stats-row">
+                        <span>HIGH SCORE: <span id="highScoreDisplay">0</span></span>
+                        <span>TOTAL POINTS: <span id="totalCoinsDisplay">0</span></span>
+                    </div>
+                    <div class="stats-row" style="margin-top:0; background:#3A6A2Acc;" id="pawrencyRow">
+                        <span>PAWRENCY: <span id="pawrencyDisplay">—</span></span>
+                        <span>ENERGY: <span id="energyDisplay">—</span></span>
+                    </div>
+                </div>
+
+                <!-- ENERGY WARNING SCREEN -->
+                <div id="energyWarningScreen" class="screen hide">
+                    <div class="energy-warn-icon">⚡</div>
+                    <div class="energy-warn-title">NOT ENOUGH ENERGY!</div>
+                    <div class="energy-warn-body">
+                        Your pet is too tired to go on an adventure.<br><br>
+                        You need <strong>25% energy</strong> to start a journey.<br>
+                        Complete daily tasks to restore your pet's energy!
+                    </div>
+                    <div class="energy-warn-bar-wrap">
+                        <div class="energy-warn-bar" id="energyWarnBar" style="width:0%"></div>
+                    </div>
+                    <span style="color:#FF8C5A; font-weight:bold; font-size:1rem; margin-bottom:16px;">
+                        Current Energy: <span id="energyWarnValue">0</span>%
+                    </span>
+                    <button id="energyWarnBack" style="background:#574537; box-shadow:0 4px 0 #361D0F;">🔙 BACK TO
+                        CAMP</button>
+                    <button id="energyWarnTasks"
+                        style="background:#5D9B4A; box-shadow:0 4px 0 #3A6A2A; margin-top:4px;">📋 DAILY TASKS</button>
+                </div>
+
+                <!-- HOW TO PLAY SCREEN -->
+                <div id="howScreen" class="screen hide">
+                    <div class="title">📜 TRAIL RULES</div>
+                    <div class="instruction-text">
+                        SWIPE to clear obstacles before they reach your pet!<br><br>
+                        💧 MUD PUDDLE → ⬆️ SWIPE UP<br>
+                        🕳️ HOLE → ⬇️ SWIPE DOWN<br>
+                        🪵 FENCE → ➡️ SWIPE RIGHT<br><br>
+                        Wrong swipe = Time -2 sec<br>
+                        Missed obstacle = Time -2 sec<br>
+                        Protect your companion & survive as long as you can.<br>
+                        Danger rises as your score grows.
+                    </div>
+                    <button id="backFromHow">RETURN</button>
+                </div>
+
+                <!-- SETTINGS SCREEN -->
+                <div id="settingsScreen" class="screen hide">
+                    <div class="title">CAMP SETTINGS</div>
+                    <div
+                        style="display: flex; flex-direction: column; gap: 18px; background: #574537aa; padding: 20px; border-radius: 48px;">
+                        <label><span>SFX:</span> <input type="checkbox" id="sfxToggle" checked></label>
+                        <label><span>DRUMS (BGM):</span> <input type="checkbox" id="bgmToggle" checked></label>
+                        <label><span>DIFFICULTY:</span>
+                            <select id="difficultySelect">
+                                <option value="easy">Easy (peaceful)</option>
+                                <option value="normal" selected>Normal (balanced)</option>
+                                <option value="hard">Hard (merciless)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button id="saveSettingsBtn">SAVE & RETURN</button>
+                    <button id="backFromSettings">BACK</button>
+                </div>
+
+                <!-- PAUSE MENU -->
+                <div id="pauseMenu" class="screen hide">
+                    <div class="title">⏸ DREAMER'S PAUSE</div>
+                    <button id="resumeBtn">▶ RESUME PATH</button>
+                    <button id="restartBtn">RESTART TRAIL</button>
+                    <button id="mainMenuFromPause">EXIT</button>
+                </div>
+
+                <!-- GAME OVER SCREEN -->
+                <div id="gameOverScreen" class="screen hide">
+                    <div class="title">JOURNEY ENDS</div>
+                    <div id="gameOverStats"
+                        style="background:#361D0Fcc; padding: 16px; border-radius: 36px; margin: 12px; width: 80%;">
+                        Final Score: <span id="finalScoreSpan">0</span><br>
+                        Highest Score: <span id="finalHighSpan">0</span><br>
+                        Obstacles Cleared: <span id="clearedCountSpan">0</span><br>
+                        Survival Time: <span id="survivalTimeSpan">0</span> sec<br><br>
+                        <span style="color:#E1AF93; font-size:1.1rem;">🐾 Pawrency Earned: <strong
+                                id="coinsEarnedSpan">0</strong> coins</span>
+                    </div>
+                    <button id="playAgainBtn">TRY AGAIN</button>
+                    <button id="goCoupawsBtn" style="background:#5D9B4A; box-shadow: 0 4px 0 #3A6A2A;">🎟️ GO TO
+                        COUPAWS</button>
+                    <button id="mainMenuFromGameOver">MAIN CAMP</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

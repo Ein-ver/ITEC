@@ -149,9 +149,9 @@ body {
 
 .nav-links {
     display: flex;
-    align-items: center; /* FIX 1: Centers the text vertically so they aren't floating up! */
+    align-items: center; /* Anti-gravitea */
     gap: 28px;
-    flex: 1;             /* FIX 2: Forces the container to stretch across the empty space */
+    flex: 1;             /* Forces logout/login far right */
 }
 
 .nav-links a {
@@ -572,7 +572,7 @@ body {
     /* Combat Arena Fixes */
     .main-content { padding: 15px; }
     
-    /* Stacks the Pet and Enemy on top of each other! */
+    /* Stacks the Pet and Enemy on top */
     .game-arena {
         flex-direction: column;
         padding: 20px 15px;

@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 1. Mobile Menu Toggle Logic
+// Mobile Menu Toggle Logic
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
 }
 
-// 2. Dynamic Header Scroll Background Logic
+// Dynamic Header Scroll Background Logic
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('nav');
     if (window.scrollY > 50) {
@@ -42,7 +42,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3. Smooth Scroll back to top when clicking Logo
+// Smooth Scroll back to top when clicking Logo
 const backTopLogo = document.getElementById('logo-backtop');
 if (backTopLogo) {
     backTopLogo.addEventListener('click', (event) => {
@@ -92,7 +92,7 @@ function rotatePetCard() {
 setInterval(rotatePetCard, 4000);
 
 // ═══════════════════════════════════════
-// 5. MODAL DISPLAY OPEN/CLOSE UTILITIES
+// MODAL DISPLAY OPEN/CLOSE UTILITIES
 // ═══════════════════════════════════════
 const authModal = document.getElementById('authModal');
 const btnLoginNav = document.querySelector('.btn-login'); // Nav bar button
@@ -137,7 +137,7 @@ function showLoginView(e) {
     }
 }
 
-// FIXED: Consolidated Nav Bar Log In / Play Listener
+// Consolidated Nav Bar Log In / Play Listener
 if (btnLoginNav) {
     btnLoginNav.addEventListener('click', (e) => {
         const loggedInUser = localStorage.getItem('loggedInUser');
@@ -149,7 +149,7 @@ if (btnLoginNav) {
     });
 }
 
-// FIXED: Consolidated "Start the Journey" Listener (Prevents the split-second pop-up flicker)
+// Consolidated "Start the Journey" Listener (Prevents the split-second pop-up flicker)
 if (btnJourney) {
     btnJourney.addEventListener('click', (e) => {
         const loggedInUser = localStorage.getItem('loggedInUser');

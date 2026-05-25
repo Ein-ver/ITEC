@@ -1,0 +1,866 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(../Fonts/Work_Sans/WorkSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url(../Fonts/League_Spartan/league-spartan.bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #361D0F;
+    /* dark brown background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, sans-serif;
+    touch-action: pan-y pinch-zoom;
+    padding: 16px;
+}
+
+/* main game card */
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: #5D3522;
+    /* medium brown topbar area */
+    border-radius: 48px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 200, 0.2);
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    background: #36401A;
+    /* dark olive green — grassy area */
+    cursor: pointer;
+    touch-action: none;
+}
+
+/* overlay screens (cream modal style) */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(107, 103, 99, 0.85);
+    /* #6B6763 overlay */
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    border-radius: 48px;
+    padding: 20px;
+    text-align: center;
+    color: #F4E5D5;
+    /* cream text */
+}
+
+.hide {
+    display: none;
+}
+
+/* game header — score above timer, pause button top-right */
+.game-header {
+    position: absolute;
+    top: 14px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.score-timer-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* exactly 15px gap between score and timer */
+    background: rgba(54, 29, 15, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 8px 18px;
+    border-radius: 36px;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.score-text,
+.timer-text {
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #361D0F;
+    color: #F4E5D5;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.timer-text {
+    font-size: 1.2rem;
+}
+
+.pause-btn {
+    position: relative;
+    background: #B65B2F;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 25;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #5D3522;
+    color: #F4E5D5;
+    border: none;
+    font-family: inherit;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.pause-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #5D3522;
+}
+
+.game-container .screen button,
+.btn-like {
+    background: #D1774C;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 26px;
+    margin: 10px;
+    border-radius: 60px;
+    color: #F4E5D5;
+    font-family: inherit;
+    box-shadow: 0 4px 0 #5D3522;
+    cursor: pointer;
+    transition: 0.07s linear;
+    width: 210px;
+    letter-spacing: 1px;
+}
+
+.game-container .screen button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #5D3522;
+}
+
+.stats-row {
+    display: flex;
+    gap: 28px;
+    background: #574537cc;
+    padding: 10px 20px;
+    border-radius: 60px;
+    margin: 20px;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 3px 3px 0 #361D0F;
+    margin-bottom: 16px;
+    color: #E1AF93;
+}
+
+.pet-run {
+    width: 120px;
+    height: 120px;
+    background: #B65B2F;
+    border-radius: 60px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    box-shadow: inset 0 0 0 3px #E1AF93;
+}
+
+.instruction-text {
+    background: #574537dd;
+    padding: 18px;
+    border-radius: 36px;
+    font-size: 1rem;
+    max-width: 85%;
+    margin: 12px;
+    color: #F4E5D5;
+    backdrop-filter: blur(4px);
+}
+
+.feedback-pop {
+    position: absolute;
+    z-index: 50;
+    font-size: 2rem;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 2px 2px 0 #361D0F;
+    animation: fadePop 0.6s forwards;
+}
+
+@keyframes fadePop {
+    0% {
+        opacity: 1;
+        transform: scale(0.6);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+}
+
+.red-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(180, 50, 30, 0.55);
+    pointer-events: none;
+    z-index: 45;
+    animation: flashFade 0.2s ease-out;
+}
+
+@keyframes flashFade {
+    from {
+        opacity: 0.75;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Energy warning modal */
+#energyWarningScreen {
+    background: rgba(54, 29, 15, 0.96);
+    backdrop-filter: blur(14px);
+}
+
+.energy-warn-icon {
+    font-size: 3.5rem;
+    margin-bottom: 8px;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.energy-warn-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #FF8C5A;
+    text-shadow: 2px 2px 0 #361D0F;
+    margin-bottom: 6px;
+}
+
+.energy-warn-body {
+    background: #574537cc;
+    border-radius: 28px;
+    padding: 16px 22px;
+    font-size: 1rem;
+    color: #F4E5D5;
+    max-width: 82%;
+    margin: 10px 0 18px;
+    line-height: 1.6;
+}
+
+.energy-warn-bar-wrap {
+    width: 80%;
+    background: #361D0F;
+    border-radius: 20px;
+    height: 14px;
+    margin: 4px 0 18px;
+    overflow: hidden;
+}
+
+.energy-warn-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #FF5533, #FF8C5A);
+    transition: width 0.4s ease;
+}
+
+/* In-game energy HUD pill */
+.energy-hud {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(54, 29, 15, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: 36px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #F4E5D5;
+    text-shadow: 1px 1px 0 #361D0F;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.energy-hud-bar-wrap {
+    width: 52px;
+    height: 8px;
+    background: #361D0F;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.energy-hud-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s ease, background 0.4s;
+}
+
+/* Circular pet avatar on start screen */
+.pet-avatar-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #E1AF93;
+    box-shadow: 0 0 0 4px #B65B2F, 0 6px 18px rgba(0, 0, 0, 0.4);
+    margin: 12px 0;
+    display: block;
+}
+
+.pet-avatar-fallback {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #B65B2F;
+    border: 4px solid #E1AF93;
+    box-shadow: 0 0 0 4px #574537, 0 6px 18px rgba(0, 0, 0, 0.4);
+    margin: 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+}
+
+/* settings panel */
+select,
+input {
+    background: #DBC7B6;
+    border: none;
+    border-radius: 28px;
+    padding: 6px 12px;
+    font-weight: bold;
+    color: #361D0F;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+/* ── SITE SHELL: nav + sidebar ── */
+:root {
+    --orange: #d97b4f;
+    --orange-dark: #b85e32;
+    --brown: #7a3b1e;
+    --nav-h: 64px;
+    --sidebar-w: 220px;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(../Fonts/Work_Sans/WorkSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url(../Fonts/League_Spartan/league-spartan.bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    background: #f5ece4;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    /* override game's flex centering */
+    display: block;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.game-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-h);
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    z-index: 200;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-logo img {
+    height: 70px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a.active {
+    color: white;
+}
+
+.btn-profile {
+    margin-left: auto;
+    /* The holy auto saves us again. Thank you, PRAISE THE AUTO */
+    color: white;
+    text-decoration: none;
+    font-family: 'EtnaSerif', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.btn-profile:hover {
+    opacity: 0.75;
+}
+
+.btn-logout {
+    background: var(--orange-dark);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-logout:hover {
+    background: var(--brown);
+    transform: scale(1.04);
+    box-shadow: none;
+}
+
+.page-layout {
+    display: flex;
+    margin-top: var(--nav-h);
+    min-height: calc(100vh - var(--nav-h));
+}
+
+.sidebar {
+    width: var(--sidebar-w);
+    background: var(--brown);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 8px;
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--nav-h);
+    height: calc(100vh - var(--nav-h));
+}
+
+.sidebar-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'OpenSauce', sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 16px 32px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 0 30px 30px 0;
+    margin-right: 16px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.sidebar-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-btn.active {
+    background: #f0e0d0;
+    color: var(--brown);
+}
+
+.walk-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 24px;
+    overflow-y: auto;
+    background: #f5ece4;
+    touch-action: pan-y pinch-zoom;
+}
+
+/* ── GAME CONTAINER: override game's own body centering ── */
+.game-container {
+    margin: 0 auto;
+}
+
+/* Hide hamburger on desktop */
+.hamburger {
+    display: none;
+}
+
+/* ══════════════════════════════════════════════════
+       MOBILE VIEW — matches Adventure & Daily Task
+    ══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* Navbar & Hamburger */
+    .game-nav {
+        padding: 0 16px;
+        justify-content: space-between;
+    }
+
+    .nav-logo img {
+        height: 45px;
+    }
+
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        /* override game's generic button rule */
+        width: auto;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0 4px;
+        letter-spacing: normal;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        width: 100%;
+        background: rgba(217, 123, 79, 0.98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        gap: 20px;
+        z-index: 100;
+    }
+
+    .btn-profile {
+        margin-left: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Scrollable Top Tab Bar — sidebar becomes horizontal */
+    .page-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 0;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        height: auto;
+        position: static;
+    }
+
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar-btn {
+        border-radius: 0;
+        padding: 16px 24px;
+        margin-right: 0;
+        border-bottom: 3px solid transparent;
+        display: inline-block;
+    }
+
+    .sidebar-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .sidebar-btn.active {
+        background: var(--brown);
+        color: white;
+        border-bottom: 3px solid var(--beige);
+    }
+
+    /* Walk main content */
+    .walk-main {
+        padding: 16px 8px;
+    }
+}

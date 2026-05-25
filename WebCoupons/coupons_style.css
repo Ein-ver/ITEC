@@ -161,9 +161,9 @@ body {
 
 .nav-links {
     display: flex;
-    align-items: center; /* FIX 1: Centers the text vertically so they aren't floating up! */
+    align-items: center; /* Anti-gravitea */
     gap: 28px;
-    flex: 1;             /* FIX 2: Forces the container to stretch across the empty space */
+    flex: 1;             /* Forces logout/login far right */
 }
 
 .nav-links a {
@@ -659,7 +659,7 @@ body {
         gap: 12px; 
         margin-bottom: 20px; 
     }
-    .search-wrap { width: 100%; max-width: 100%; } /* Search takes full width! */
+    .search-wrap { width: 100%; max-width: 100%; } 
     
     /* filter button */
     .btn-mobile-filter {
@@ -679,7 +679,7 @@ body {
         box-shadow: 4px 0 24px rgba(0,0,0,0.3); overflow-y: auto;
         transition: left 0.3s ease; /* Smooth sliding animation */
     }
-    .filter-sidebar.open { left: 0; } /* Slides in when toggled! */
+    .filter-sidebar.open { left: 0; } /* Slides in */
     
     /* Show close button inside the drawer */
     .btn-close-filters {

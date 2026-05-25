@@ -1,4 +1,4 @@
-// Add this right at the top!
+// MOBILE
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
 }

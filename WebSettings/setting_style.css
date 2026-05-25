@@ -335,7 +335,7 @@ body {
 }
 
 /* ═══════════════════════
-   PET CARD PREVIEW (matches index card)
+   PET CARD PREVIEW
 ═══════════════════════ */
 .card-preview-title {
     font-family: 'EtnaSerif', sans-serif;
@@ -349,7 +349,7 @@ body {
     flex: 0 0 420px;   /* wider to fit the bigger card */
 }
 
-/* Reuse exact same card styles as index */
+/* Design Pet Card */
 .pet-card-preview {
     background-color: #cbcbc9;
     width: 100%;
@@ -543,7 +543,7 @@ body {
 ══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
     
-    /* ── 1. NAVBAR & HAMBURGER ── */
+    /* ── NAVBAR & HAMBURGER ── */
     .profile-nav {
         padding: 0 16px;
         justify-content: space-between;
@@ -559,7 +559,7 @@ body {
         cursor: pointer;
     }
 
-    /* Convert links into absolute dropdown */
+    /* navbar to drop down make it drop like some wahwahwah */
     .nav-links {
         display: none; 
         position: absolute;
@@ -581,7 +581,7 @@ body {
     }
     .btn-logout { margin-left: 0; background-color: #7c340b;} /* Reset margin for mobile stack */
 
-    /* ── 2. LAYOUT & SCROLLABLE SIDEBAR ── */
+    /* ── LAYOUT & SCROLLABLE SIDEBAR ── */
     .page-layout {
         flex-direction: column; /* Stacks sidebar on top of content */
     }
@@ -611,7 +611,7 @@ body {
         border-bottom: 3px solid var(--beige); /* Underline indicator */
     }
 
-    /* ── 3. MAIN CONTENT FIXES (320px Safe) ── */
+    /* ── 3. MAIN CONTENT (320px Safe) ── */
     .main-content {
         padding: 20px 15px; /* Squeeze margins to maximize screen */
     }
@@ -633,7 +633,7 @@ body {
         max-width: 100%;
     }
 
-    /* ── 4. PET CARD RESIZING ── */
+    /* ── PET CARD RESIZING ── */
     .pet-card-preview {
         padding: 16px; /* Shrink padding to fit 320px */
         gap: 12px;

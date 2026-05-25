@@ -1,12 +1,12 @@
 // ═══════════════════════════════════════
-// 0. MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE
 // ═══════════════════════════════════════
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
 }
 
 // ═══════════════════════════════════════
-// 1. LOAD LOGGED IN USER DATA
+// LOAD LOGGED IN USER DATA
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
@@ -15,7 +15,7 @@ if (!currentUser) {
     window.location.href = '../WebIndex/index.html';
 }
 
-// Pre-fill email (read-only) and username if already set
+// email cannot be edited until username saved
 const profileEmailEl = document.getElementById('profileEmail');
 const profileUsernameEl = document.getElementById('profileUsername');
 const petNameEl = document.getElementById('petName');
@@ -46,7 +46,7 @@ if (profileEmailEl) {
 }
 
 // ═══════════════════════════════════════
-// 2. SIDEBAR SWITCHING
+// SIDEBAR SWITCHING
 // ═══════════════════════════════════════
 const sidebarBtns = document.querySelectorAll('.sidebar-btn');
 const sectionPanels = document.querySelectorAll('.section-panel');
@@ -66,7 +66,7 @@ sidebarBtns.forEach(btn => {
 });
 
 // ═══════════════════════════════════════
-// 3. LIVE PET CARD PREVIEW
+// LIVE PET CARD PREVIEW
 // ═══════════════════════════════════════
 function updatePreviewName(val) {
     const el = document.getElementById('previewPetName');
@@ -90,7 +90,7 @@ if (petNameEl) petNameEl.addEventListener('input', () => updatePreviewName(petNa
 if (petTitleEl) petTitleEl.addEventListener('input', () => updatePreviewTitle(petTitleEl.value));
 
 // ═══════════════════════════════════════
-// 4. PET PHOTO UPLOAD
+// PET PHOTO UPLOAD
 // ═══════════════════════════════════════
 const btnUploadPet = document.getElementById('btnUploadPet');
 const petPhotoInput = document.getElementById('petPhotoInput');
@@ -115,7 +115,7 @@ if (petPhotoInput) {
 }
 
 // ═══════════════════════════════════════
-// 5. SAVE CHANGES
+// SAVE CHANGES
 // ═══════════════════════════════════════
 const btnSave = document.getElementById('btnSave');
 
@@ -155,7 +155,7 @@ if (btnSave) {
 }
 
 // ═══════════════════════════════════════
-// 6. CHANGE PASSWORD (SECURITY TAB)
+// CHANGE PASSWORD (SECURITY TAB)
 // ═══════════════════════════════════════
 const btnChangePass = document.getElementById('btnChangePass');
 
@@ -217,7 +217,7 @@ if (btnChangePass) {
 }
 
 // ═══════════════════════════════════════
-// 7. LOGOUT
+// LOGOUT
 // ═══════════════════════════════════════
 const btnLogout = document.getElementById('btnLogout');
 
@@ -230,7 +230,7 @@ if (btnLogout) {
 
 
 // ═══════════════════════════════════════
-// 8. LOAD OWNED COUPONS IN COUPAWS TAB
+// LOAD OWNED COUPONS IN COUPAWS TAB
 // ═══════════════════════════════════════
 
 // Coupons nabili sa shop, max 16 letters lang sa coupon

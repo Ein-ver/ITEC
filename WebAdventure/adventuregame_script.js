@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════
-// 0. MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE
 // ═══════════════════════════════════════
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
@@ -63,7 +63,7 @@ function saveAccount() {
 }
 
 // ═══════════════════════════════════════
-// POPULATE PET CARD
+// PET CARD FOR GAME
 // ═══════════════════════════════════════
 function populateArenaCard() {
     document.getElementById('arenaCardName').textContent  = acc.petName  || 'PET NAME';
@@ -85,6 +85,7 @@ function populateArenaCard() {
 // ═══════════════════════════════════════
 // UPDATE HUD
 // ═══════════════════════════════════════
+// Bale eto ung nagse-save ng lahat ng value tapos papakita sa playersd
 function updateHUD() {
     document.getElementById('bonesCount').textContent   = bones;
     document.getElementById('kmCount').textContent      = km.toFixed(1);
@@ -96,10 +97,10 @@ function updateHUD() {
 // SPAWN ENEMY
 // ═══════════════════════════════════════
 function spawnEnemy() {
-    // Pick random enemy from pool
+    // random enemy per pool
     const template = ENEMY_POOL[Math.floor(Math.random() * ENEMY_POOL.length)];
 
-    // Scale health: base + 2 per full KM reached
+    // increase ng health kada KM na reached
     const kmBonus  = Math.floor(km) * 2;
     enemyMaxHealth = template.baseHealth + kmBonus;
     enemyHealth    = enemyMaxHealth;
@@ -141,10 +142,10 @@ function attackLoop() {
     setTimeout(() => document.getElementById('enemyCard').classList.remove('shake-right'), 400);
 
     if (enemyHealth <= 0) {
-        // Enemy defeated!
+        // Enemy defeated!!!!!
         enemyDefeated();
     } else {
-        // Enemy attacks back — takes one bone
+        // enemy damage takes one bone
         document.getElementById('enemyHealth').textContent = `${enemyHealth} PAWS`;
         setTimeout(() => {
             if (!gameRunning) return;
@@ -286,14 +287,14 @@ function nextTutorialStep() {
 
     document.getElementById('tutorialText').textContent = tutorialSteps[tutorialStep];
 
-    // Last step — change button to "I'M READY!"
+    // change button to "I'M READY!"
     if (tutorialStep === tutorialSteps.length - 1) {
         document.getElementById('btnTutorialNext').textContent = "I'M READY!";
     }
 }
 
 // ═══════════════════════════════════════
-// 13. INIT
+// INIT
 // ═══════════════════════════════════════
 if (loadAccount()) {
     populateArenaCard();

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════
-// 0. MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE
 // ═══════════════════════════════════════
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
@@ -14,13 +14,13 @@ const btnEnergyCancel  = document.getElementById('btnEnergyCancel');
 
 
 // ═══════════════════════════════════════
-// 1. AUTH GUARD + LOAD USER
+// AUTH GUARD + LOAD USER
 // ═══════════════════════════════════════
 const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!currentUser) window.location.href = '../WebIndex/index.html';
 
 // ═══════════════════════════════════════
-// 2. GAME CONSTANTS
+// GAME CONSTANTS
 // ═══════════════════════════════════════
 const XP_PER_LEVEL = 200;
 const GROUP_ENERGY = { morning: 20, bonding: 40, care: 10 };
@@ -29,7 +29,7 @@ const TOTAL_TASKS = 7;   // add kayo kapag nagdagdag tasks dito ah
 const MAX_ENERGY = 200;
 
 // ═══════════════════════════════════════
-// 3. LOAD / INIT GAME STATE
+// LOAD / INIT GAME STATE
 // ═══════════════════════════════════════
 function getTodayKey() {
     return new Date().toISOString().split('T')[0];
@@ -52,27 +52,26 @@ function loadGameState() {
         save(accounts, index, acc);
     }
 
-    // Ensure pawer exists on older saves
+    // Save Pawer
     if (acc.game.pawer === undefined) {
         acc.game.pawer = acc.game.level * PAWR_PER_LEVEL;
         save(accounts, index, acc);
     }
 
-    // Midnight reset
+    // Daily reset
     const today = getTodayKey();
     if (acc.game.lastDate !== today) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         const yKey = yesterday.toISOString().split('T')[0];
 
-        // FIX: streak counts how many tasks were checked, not if ALL were true
         const checkedCount = Object.keys(acc.game.checkedTasks).length;
         const totalTasks = document.querySelectorAll('.task-item input[type="checkbox"]').length;
 
         if (acc.game.lastDate === yKey && checkedCount >= totalTasks) {
-            acc.game.streak += 1;   // completed all tasks yesterday
+            acc.game.streak += 1;   // if all tasks completed
         } else if (acc.game.lastDate !== '' && acc.game.lastDate !== yKey) {
-            acc.game.streak = 0;    // missed a day
+            acc.game.streak = 0;    // Adv streak skipped so back to 0
         }
 
         acc.game.checkedTasks = {};
@@ -86,7 +85,7 @@ function loadGameState() {
 }
 
 // ═══════════════════════════════════════
-// 4. SAVE HELPER
+// SAVE HELPER
 // ═══════════════════════════════════════
 function save(accounts, index, acc) {
     accounts[index] = acc;
@@ -95,7 +94,7 @@ function save(accounts, index, acc) {
 }
 
 // ═══════════════════════════════════════
-// 5. POPULATE PET CARD
+// POPULATE PET CARD
 // ═══════════════════════════════════════
 function populatePetCard(acc) {
     const nameEl = document.getElementById('gameCardName');
@@ -129,7 +128,7 @@ function populatePetCard(acc) {
 }
 
 // ═══════════════════════════════════════
-// 6. RESTORE CHECKED + DISABLE CHECKED
+// RESTORE CHECKED + DISABLE CHECKED
 // ═══════════════════════════════════════
 function restoreCheckboxes(checkedTasks) {
     const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
@@ -137,12 +136,12 @@ function restoreCheckboxes(checkedTasks) {
         const key = `task_${i}`;
         if (checkedTasks[key]) {
             cb.checked = true;
-            disableTaskItem(cb); // already checked today — lock it
+            disableTaskItem(cb); // if checked lonck na yung checbkox
         }
     });
 }
 
-// Visually lock a checked task item
+// Black out checkbox
 function disableTaskItem(cb) {
     cb.disabled = true;
     const label = cb.closest('.task-item');
@@ -150,7 +149,7 @@ function disableTaskItem(cb) {
 }
 
 // ═══════════════════════════════════════
-// 7. HANDLE CHECKBOX CHANGE
+// HANDLE CHECKBOX CHANGE
 // ═══════════════════════════════════════
 function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
     if (!cb.checked) return; // only fires on check, not uncheck (disabled anyway)
@@ -171,7 +170,7 @@ function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
     const allGroupDone = [...groupBoxes].every(c => c.checked);
     if (allGroupDone) {
         if (acc.game.energy >= MAX_ENERGY) {
-            // Energy is full — warn the user but still give XP
+            // Energy is full then warn user
             const proceed = confirm('Warning: Energy from this quest won\'t be added (max energy reached). Do you still want to complete (would only get EXP)?');
             if (!proceed) {
                 // Undo the checkbox
@@ -185,7 +184,7 @@ function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
                 populatePetCard(acc);
                 return;
             }
-            // User chose to continue — skip energy award but keep XP
+            // If gusto parin magcheckbox pero wala nang energy
         } else {
             acc.game.energy = Math.min(MAX_ENERGY, acc.game.energy + (GROUP_ENERGY[group] || 0));
         }
@@ -212,7 +211,7 @@ function handleTaskChange(cb, taskIndex, acc, accounts, accIndex) {
 }
 
 // ═══════════════════════════════════════
-// 8. POPUPS
+// POPUPS
 // ═══════════════════════════════════════
 function showExpPopup(element, text) {
     const rect = element.closest('.task-item').getBoundingClientRect();
@@ -242,7 +241,7 @@ function showLevelUpPopup(level) {
 }
 
 // ═══════════════════════════════════════
-// 9. SIDEBAR SWITCHING
+// SIDEBAR SWITCHING
 // ═══════════════════════════════════════
 document.querySelectorAll('.sidebar-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -254,7 +253,7 @@ document.querySelectorAll('.sidebar-btn').forEach(btn => {
 });
 
 // ═══════════════════════════════════════
-// 10. LOGOUT
+// LOGOUT
 // ═══════════════════════════════════════
 const btnLogout = document.getElementById('btnLogout');
 if (btnLogout) {
@@ -265,7 +264,7 @@ if (btnLogout) {
 }
 
 // ═══════════════════════════════════════
-// 11. INIT
+// INIT
 // ═══════════════════════════════════════
 const state = loadGameState();
 if (state) {

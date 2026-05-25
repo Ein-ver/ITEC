@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════
-// 0. MOBILE MENUS (Hamburger & Filters)
+// MOBILE MENUS (Hamburger & Filters)
 // ═══════════════════════════════════════
 function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');

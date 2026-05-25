@@ -178,7 +178,7 @@ nav.scrolled {
     max-width: 700px;
 }
 
-/* FIX: removed padding so logo aligns with h1 and p */
+/* removed padding so logo aligns with h1 and p */
 .main-logo {
     margin-left: -30px;
     margin-bottom: 0;
@@ -222,7 +222,7 @@ nav.scrolled {
    ADVENTURE SECTION
 ═══════════════════════════ */
 .adventure-section {
-    background-color: #cbb1a3; /* Matches your warm background color */
+    background-color: #cbb1a3;
     padding: 80px 40px;
     width: 100%;
     display: flex;
@@ -247,7 +247,7 @@ nav.scrolled {
 .adventure-left h2 {
     font-family: 'ArchivoBlack', 'Gagalin', sans-serif;
     font-size: 3rem;
-    color: #fff; /* White title with a soft offset shadow look */
+    color: #fff; /* White title */
     text-shadow: 2px 2px 0px rgba(65, 38, 17, 0.2);
     margin-bottom: 24px;
     letter-spacing: 1px;
@@ -256,12 +256,12 @@ nav.scrolled {
 .adventure-subtext {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #412611; /* Dark brown for high contrast readability */
+    color: #412611;
     margin-bottom: 20px;
 }
 
 .adventure-features {
-    list-style-type: none; /* Removes standard bullets so we can style them */
+    list-style-type: none; /* i need more bullets, biggers weapons sir*/
     margin-bottom: 32px;
 }
 
@@ -288,7 +288,7 @@ nav.scrolled {
     color: white;
     border: none;
     padding: 14px 36px;
-    border-radius: 12px; /* Smooth rounded corners matching your image */
+    border-radius: 12px;
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     font-weight: 800;
@@ -330,7 +330,7 @@ nav.scrolled {
 
 /* The Main Card Box */
 .pet-card {
-    background-color: #cbcbc9; /* Matches the exact matte gray background */
+    background-color: #cbcbc9; 
     width: 100%;
     max-width: 380px;
     border-radius: 28px;       /* Smooth rounded card frame */
@@ -377,10 +377,10 @@ nav.scrolled {
 .pet-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Keeps real images nicely cropped inside */
+    object-fit: cover;
 }
 
-/* Decorative Title Separator Line */
+/* Title Separator Line */
 .card-title-divider {
     display: flex;
     align-items: center;
@@ -530,7 +530,7 @@ footer .foot_list {
 ═══════════════════════════ */
 @media (max-width: 768px) {
     .adventure-container {
-        flex-direction: column; /* Automatically stacks them on mobile! */
+        flex-direction: column; /* Stack on mobile */
         text-align: center;
         gap: 40px;
     }
@@ -539,7 +539,7 @@ footer .foot_list {
         padding-left: 0;
     }
     .adventure-features li::before {
-        display: none; /* Cleans up alignment for center text on mobile */
+        display: none; /* center text on mobile */
     }
     
     .adventure-left h2 {
@@ -711,7 +711,7 @@ footer .foot_list {
     margin-left: 12px;
 }
 
-/* General form-level error (wrong credentials, terms not checked) */
+/* errors (wrong credentials, terms not checked) */
 .form-error {
     display: block;
     font-size: 0.82rem;
@@ -761,10 +761,10 @@ footer .foot_list {
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .nav-links.open {
-        display: flex; /* The JS toggleMenu() function turns this on! */
+        display: flex; /* JS toggleMenu() */
     }
 
-    /* ── 2. HERO SECTION FIXES ── */
+    /* ── 2. HERO SECTION ── */
     .hero-left-bg {
         display: none; /* Hides the left background as requested */
     }
@@ -799,7 +799,7 @@ footer .foot_list {
         font-size: 0.95rem;
     }
 
-    /* ── 3. ADVENTURE & FOOTER FIXES ── */
+    /* ── 3. ADVENTURE & FOOTER ── */
     .adventure-container {
         flex-direction: column; 
         text-align: center;
