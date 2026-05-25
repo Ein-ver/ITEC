@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips & Tricks</title>
+    <link rel="shortcut icon" href="../Assets/FaviconLogo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="tips_style.css">
+    <script src="tips_script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="../Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu">
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../WebCoupons/coupons.html">Coupaws</a></li>
+            <li><a href="../WebDonate/donate.html">Donate</a></li>
+            <li><a href="tips.html">Tips & Tricks</a></li>
+        </ul>
+        <button class="btn-login" id="navAuthBtn">Log In</button>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+
+    <!-- HERO TITLE SECTION -->
+    <section class="tips-hero">
+        <div class="tips-hero-content">
+            <span class="tips-eyebrow">Learn Together</span>
+            <h1 class="tips-title">Tips & Tricks</h1>
+            <p class="tips-subtitle">Step-by-step guides to help you and your pet thrive together</p>
+        </div>
+    </section>
+
+    <!-- SEPARATOR -->
+    <div class="separator"></div>
+
+    <!-- CARDS GRID -->
+    <section class="cards-section">
+        <div class="cards-grid">
+
+            <!-- Card 1: Wash -->
+            <div class="tutorial-card" data-card-id="wash">
+                <div class="card-img-wrap">
+                    <img src="../Assets/wash.jpg" alt="How to wash your pet">
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Wash Your Pet</h3>
+                </div>
+            </div>
+
+            <!-- Card 2: Litter Box -->
+            <div class="tutorial-card" data-card-id="litter">
+                <div class="card-img-wrap">
+                    <img src="../Assets/litter.jpg" alt="How to litter box train your pet">
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Litter Box Train Your Pet</h3>
+                </div>
+            </div>
+
+            <!-- Card 3: Leash -->
+            <div class="tutorial-card" data-card-id="leash">
+                <div class="card-img-wrap">
+                    <img src="../Assets/leash.jpg" alt="How to train your pet to use a leash">
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Train Your Pet to Use a Leash</h3>
+                </div>
+            </div>
+
+            <!-- Card 4: Roll Over -->
+            <div class="tutorial-card" data-card-id="rollover">
+                <div class="card-img-wrap">
+                    <img src="../Assets/roll.jpg" alt="How to teach your pet to roll over">
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Teach Your Pet to Roll Over</h3>
+                </div>
+            </div>
+
+            <!-- Card 5: Shake -->
+            <div class="tutorial-card" data-card-id="shake">
+                <div class="card-img-wrap">
+                    <img src="../Assets/shake.jpg" alt="How to teach your pet to shake hands" >
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Teach Your Pet to Shakehand</h3>
+                </div>
+            </div>
+
+            <!-- Card 6: Sit -->
+            <div class="tutorial-card" data-card-id="sit">
+                <div class="card-img-wrap">
+                    <img src="../Assets/sit.jpg" alt="How to teach your pet to sit">
+                    <div class="card-overlay">
+                        <span class="card-tap-hint">Click to learn ▼</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">How to Teach Your Pet to Sit</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODAL POPUP -->
+    <div class="modal-popup-overlay" id="modalPopupOverlay">
+        <div class="modal-popup-container">
+            <button class="modal-popup-close" id="modalCloseBtn">&times;</button>
+            
+            <div class="modal-popup-content" id="modalPopupContent">
+                <!-- Dynamic content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER - Fixed with proper closing tags -->
+    <footer>
+        <div class="foot_nav">
+            <ul class="foot_list">
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="../WebTOS/tos.html">Terms Of Service</a></li>
+            </ul>
+            <img src="../Assets/Home_HeaderLogoSMALL.svg" alt="PETmalu Logo" class="logo_foot">
+            <p>Copyright &copy; BSCS 1-7. All rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

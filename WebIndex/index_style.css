@@ -247,7 +247,7 @@ nav.scrolled {
 .adventure-left h2 {
     font-family: 'ArchivoBlack', 'Gagalin', sans-serif;
     font-size: 3rem;
-    color: #fff; /* White title */
+    color: #fff;
     text-shadow: 2px 2px 0px rgba(65, 38, 17, 0.2);
     margin-bottom: 24px;
     letter-spacing: 1px;
@@ -273,7 +273,7 @@ nav.scrolled {
     padding-left: 20px;
 }
 
-/* Custom Bullet Point (A neat trick instead of standard dots) */
+/* Custom Bullet Point*/
 .adventure-features li::before {
     content: "•";
     position: absolute;
@@ -315,9 +315,9 @@ nav.scrolled {
     background: #e1deda; /* Light gray card backing */
     width: 100%;
     max-width: 380px;
-    border-radius: 24px; /* Matches your rounded card graphics */
+    border-radius: 24px; 
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border: 4px solid #fff; /* Gives it a premium clean border look */
+    border: 4px solid #fff; 
 }
 
 /* Card Container Setup */
@@ -333,9 +333,9 @@ nav.scrolled {
     background-color: #cbcbc9; 
     width: 100%;
     max-width: 380px;
-    border-radius: 28px;       /* Smooth rounded card frame */
+    border-radius: 28px;
     padding: 24px;
-    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.1); /* Subtle inner depth */
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.1);
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -355,7 +355,7 @@ nav.scrolled {
     width: 100%;
 }
 
-/* The Magic Trick for Vertical Text */
+/* Vertical Text */
 .pet-name-vertical {
     font-family: 'Archive', 'Gagalin', Arial, sans-serif;
     font-size: 1.8rem;
@@ -368,7 +368,7 @@ nav.scrolled {
 
 .pet-image-container {
     flex: 1;
-    background: #738c31; /* Matches the landscape greens or backup placeholder color */
+    background: #738c31;
     border-radius: 24px;
     height: 190px;
     overflow: hidden;
@@ -435,7 +435,7 @@ nav.scrolled {
 }
 
 .xp-progress {
-    background: #8fae6b; /* Soft green status fill from your layout design */
+    background: #8fae6b; 
     height: 100%;
     border-radius: 20px;
 }
@@ -785,7 +785,7 @@ footer .foot_list {
     .main-logo img {
         height: auto;
         width: 100%;
-        max-width: 260px; /* Crucial for 320px safety */
+        max-width: 260px;
     }
     .hero-content h1 {
         padding-left: 0;

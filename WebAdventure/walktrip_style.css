@@ -117,7 +117,6 @@ body {
     margin: 0;
     min-height: 100vh;
     background: #361D0F;
-    /* dark brown background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +131,6 @@ body {
     width: 100%;
     max-width: 560px;
     background: #5D3522;
-    /* medium brown topbar area */
     border-radius: 48px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 200, 0.2);
     overflow: hidden;
@@ -141,13 +139,12 @@ body {
 canvas {
     display: block;
     width: 100%;
-    background: #36401A;
-    /* dark olive green — grassy area */
+    background: #36401A; /* grass */
     cursor: pointer;
     touch-action: none;
 }
 
-/* overlay screens (cream modal style) */
+/* overlay screens */
 .screen {
     position: absolute;
     top: 0;
@@ -155,7 +152,6 @@ canvas {
     width: 100%;
     height: 100%;
     background: rgba(107, 103, 99, 0.85);
-    /* #6B6763 overlay */
     backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
@@ -166,14 +162,13 @@ canvas {
     padding: 20px;
     text-align: center;
     color: #F4E5D5;
-    /* cream text */
 }
 
 .hide {
     display: none;
 }
 
-/* game header — score above timer, pause button top-right */
+/* game header */
 .game-header {
     position: absolute;
     top: 14px;
@@ -191,7 +186,6 @@ canvas {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* exactly 15px gap between score and timer */
     background: rgba(54, 29, 15, 0.65);
     backdrop-filter: blur(4px);
     padding: 8px 18px;
@@ -614,7 +608,6 @@ body {
     margin: 0;
     background: #f5ece4;
     font-family: 'Segoe UI', system-ui, sans-serif;
-    /* override game's flex centering */
     display: block;
     padding: 0;
     min-height: 100vh;
@@ -757,7 +750,7 @@ body {
     touch-action: pan-y pinch-zoom;
 }
 
-/* ── GAME CONTAINER: override game's own body centering ── */
+/* ── GAME CONTAINER ── */
 .game-container {
     margin: 0 auto;
 }
@@ -789,7 +782,6 @@ body {
         color: white;
         font-size: 1.8rem;
         cursor: pointer;
-        /* override game's generic button rule */
         width: auto;
         margin: 0;
         box-shadow: none;
@@ -821,7 +813,7 @@ body {
         display: flex;
     }
 
-    /* Scrollable Top Tab Bar — sidebar becomes horizontal */
+    /* Scrollable Top Tab Bar */
     .page-layout {
         flex-direction: column;
     }

@@ -1,0 +1,508 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === FONTS === */
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url(../Fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gagalin';
+    src: url(../Fonts/gagalin/Gagalin-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url(../Fonts/Archivo_Black/ArchivoBlack-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archive';
+    src: url(../Fonts/archive/Archive.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EtnaSerif';
+    src: url(../Fonts/Etna_serif/etna-free-font.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceTwo-Regular.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSauceB';
+    src: url(../Fonts/Open_sauce/Font_main/Fonts/OpenSauceOne-Bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biski';
+    src: url(../Fonts/biski/BiskiTrial-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url(../Fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGoth';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CopperGothL';
+    src: url(../Fonts/CopperplateGothic/CopperplateCC/ttf/OPTICopperplate-Light.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(../Fonts/Work_Sans/WorkSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url(../Fonts/League_Spartan/league-spartan.bold.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --orange:      #d97b4f;
+    --orange-dark: #b85e32;
+    --brown:       #7a3b1e;
+    --beige:       #f0e0d0;
+    --nav-h:       64px;
+    --sidebar-w:   220px;
+}
+
+/* === PAGE HERO SECTION */
+.page-hero {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../Assets/Home_BG.webp');
+    background-size: cover;
+    background-position: left center;
+    z-index: 1;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../Assets/Home_Pets.webp');
+    background-size: cover;
+    background-position: right center;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+.page-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(65, 38, 17, 0.6) 0%, rgba(65, 38, 17, 0.3) 100%);
+    z-index: 3;
+}
+
+.page-content {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    padding: 120px 40px 60px 60px;
+}
+
+.page-content h1 {
+    font-family: 'Gagalin', sans-serif;
+    font-size: 3.5rem;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.page-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 500px;
+    text-align: justify;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-separator {
+    background-color: #c59d87;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-section {
+    background-color: #cbb1a3;
+    padding: 80px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-card {
+    background: #e1deda;
+    width: 100%;
+    max-width: 580px;
+    border-radius: 28px;
+    padding: 48px 44px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.form-card:hover {
+    transform: translateY(-4px);
+}
+
+.form-card h2 {
+    font-family: 'Archive', sans-serif;
+    font-size: 2rem;
+    color: var(--brown);
+    text-shadow: 2px 2px 0px rgba(65, 38, 17, 0.2);
+    margin-bottom: 32px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    border: 2px solid #b87a5a;
+    background: #e8d5c0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #3b2a1a;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-card textarea {
+    border-radius: 24px;
+    resize: vertical;
+    font-family: 'Nunito', sans-serif;
+}
+
+.form-card input::placeholder,
+.form-card textarea::placeholder,
+.form-card select {
+    color: #8a6a55;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    border-color: #d97b4f;
+}
+
+.form-card select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6a55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 16px;
+}
+
+.form-card button {
+    background: #d97b4f;
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-card button:hover {
+    background: #b85e32;
+    transform: scale(1.02);
+}
+
+/* === INFO SECTION - For About Us Page === */
+.info-section {
+    background-color: #cbb1a3;
+    padding: 80px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.info-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info-card {
+    background: #e1deda;
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
+    border-radius: 28px;
+    padding: 40px 36px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+}
+
+.info-card h2 {
+    font-family: 'ArchivoBlack', 'Gagalin', sans-serif;
+    font-size: 1.8rem;
+    color: #693f18;
+    text-shadow: 2px 2px 0px rgba(65, 38, 17, 0.2);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+}
+
+.info-card p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #412611;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card ul li {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: #412611;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 24px;
+}
+
+.info-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #412611;
+    font-size: 1.3rem;
+}
+
+/* === RESPONSIVE FIXES === */
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* Hero adjustments */
+    .page-hero::before {
+        display: none;
+    }
+    
+    .page-hero::after {
+        opacity: 1;
+        width: 100%;
+        filter: brightness(0.6);
+    }
+    
+    .page-content {
+        padding: 120px 20px 60px;
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .page-content h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .page-content p {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 90%;
+    }
+    
+    /* Form section */
+    .form-section {
+        padding: 60px 20px;
+    }
+    
+    .form-card {
+        padding: 32px 24px;
+    }
+    
+    .form-card h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Info section */
+    .info-section {
+        padding: 60px 20px;
+        gap: 30px;
+    }
+    
+    .info-card {
+        padding: 30px 24px;
+    }
+    
+    .info-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .page-content {
+        padding: 100px 16px 50px;
+    }
+    
+    .page-content h1 {
+        font-size: 2rem;
+    }
+    
+    .page-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .form-card {
+        padding: 28px 20px;
+    }
+    
+    .form-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+    }
+    
+    .form-card button {
+        padding: 12px 28px;
+        font-size: 0.85rem;
+    }
+    
+    .info-card {
+        padding: 24px 20px;
+    }
+    
+    .info-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .info-card p,
+    .info-card ul li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile (320px) */
+@media (max-width: 320px) {
+    .form-card {
+        padding: 24px 16px;
+    }
+    
+    .form-card h2 {
+        font-size: 1.3rem;
+    }
+}
